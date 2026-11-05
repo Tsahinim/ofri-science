@@ -1,0 +1,739 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>
+<title>המחברת של עופרי</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Rubik:wght@400;600;700&display=swap">
+<style>/* Layout: one reading column on squared notebook paper; sticky part-nav; topic cards; widgets as lab "stations" */
+:root{
+  --paper:#fbfcfe; --grid:#dbe6f3; --ink:#1d2a3a; --muted:#5a6b80;
+  --a:#1f5fa8; --b:#1e8449; --m:#7d3c98; --card:#ffffff; --line:#c9d6e6;
+  --hl:#fff1a8; --hl-b:#d9b400; --tip:#e3efff; --tip-b:#3c78c8;
+  --bad:#fde4e2; --bad-b:#c0392b; --ex:#f1f3f6; --ex-b:#8592a3;
+  --ok:#e2f5e6; --ok-b:#2e8b57; --why:#f3e9fb; --why-b:#8e44ad;
+  --stage:#f4f8fd; --water:#9ecae1; --water2:#4292c6; --juice:#f4a261; --gas:#e76f51; --air:#2a9d8f; --raisin:#5b2c1a;
+  --f-display:"Fredoka","Rubik",Arial,sans-serif; --f-body:"Rubik",Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#141b24; --grid:#1f2a37; --ink:#e7edf5; --muted:#9fb0c4;
+  --a:#6fa8ee; --b:#5cc98a; --m:#c18ee0; --card:#1a2330; --line:#2d3b4d;
+  --hl:#3d3512; --hl-b:#e3c341; --tip:#16263d; --tip-b:#6fa8ee;
+  --bad:#3a1c1a; --bad-b:#f07a6c; --ex:#1f2834; --ex-b:#8a9ab0;
+  --ok:#153022; --ok-b:#5cc98a; --why:#2a1d36; --why-b:#c18ee0;
+  --stage:#101820; --water:#3f7fae; --water2:#6fa8ee; --juice:#e08a45; --gas:#f08a6c; --air:#3cc2b3; --raisin:#b0745a;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141b24; --grid:#1f2a37; --ink:#e7edf5; --muted:#9fb0c4;
+  --a:#6fa8ee; --b:#5cc98a; --m:#c18ee0; --card:#1a2330; --line:#2d3b4d;
+  --hl:#3d3512; --hl-b:#e3c341; --tip:#16263d; --tip-b:#6fa8ee;
+  --bad:#3a1c1a; --bad-b:#f07a6c; --ex:#1f2834; --ex-b:#8a9ab0;
+  --ok:#153022; --ok-b:#5cc98a; --why:#2a1d36; --why-b:#c18ee0;
+  --stage:#101820; --water:#3f7fae; --water2:#6fa8ee; --juice:#e08a45; --gas:#f08a6c; --air:#3cc2b3; --raisin:#b0745a;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background-color:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:19px;line-height:1.75;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 60px}
+strong{font-weight:700}
+bdi.ltr{unicode-bidi:isolate;white-space:nowrap;font-variant-numeric:tabular-nums}
+p{margin:0 0 .7em}
+ul,ol{margin:0 0 .9em;padding-inline-start:1.4em}
+li{margin-bottom:.35em}
+ol li::marker{font-weight:700;color:var(--c,var(--a))}
+
+/* header */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--card);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:760px;margin:0 auto;display:flex;gap:6px;align-items:center;padding-block:8px;
+  padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));overflow-x:auto}
+.topbar .brand{font-family:var(--f-display);font-weight:600;color:var(--a);white-space:nowrap;margin-inline-end:auto;font-size:18px}
+.nav{display:flex;gap:6px}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:15px;padding:5px 12px;border-radius:999px;border:1px solid var(--line)}
+.nav a.cur{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.nav a:focus-visible,.btn:focus-visible,.toc a:focus-visible{outline:3px solid var(--tip-b);outline-offset:2px}
+#progress{height:4px;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .1s}
+
+/* cover */
+.cover{padding-block:40px 10px;text-align:center}
+.cover h1{font-family:var(--f-display);font-size:clamp(40px,10vw,64px);line-height:1.1;margin:0 0 8px;color:var(--a);text-wrap:balance}
+.cover .sub{font-family:var(--f-display);font-size:clamp(22px,5vw,28px);color:var(--b);margin-bottom:6px}
+.cover .meta{color:var(--muted);font-size:16px}
+.cover .tag{display:inline-flex;gap:10px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+.cover .tag span{font-family:var(--f-display);padding:4px 14px;border-radius:999px;color:var(--paper);font-size:17px}
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:14px 0 6px;text-align:start}
+.toc a{display:flex;gap:8px;align-items:baseline;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:16px;line-height:1.4}
+.toc a b{color:var(--c);font-family:var(--f-display);min-width:1.6em}
+.toc-h{font-family:var(--f-display);font-size:20px;margin:22px 0 0;color:var(--c)}
+
+/* parts and topics */
+section.part{scroll-margin-top:70px}
+.part-title{font-family:var(--f-display);font-weight:600;font-size:clamp(28px,7vw,40px);color:var(--paper);background:var(--c);
+  margin:46px 0 18px;padding:14px 20px;border-radius:14px;text-align:center;text-wrap:balance}
+article.topic{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 20px 14px;margin:0 0 22px;scroll-margin-top:70px;
+  box-shadow:0 1px 0 var(--line)}
+h2{font-family:var(--f-display);font-weight:600;font-size:clamp(23px,5.5vw,28px);line-height:1.3;color:var(--c);margin:14px 0 12px;
+  padding-bottom:6px;border-bottom:3px solid var(--c);text-wrap:balance}
+h3{font-family:var(--f-display);font-weight:500;font-size:21px;margin:20px 0 8px}
+p.center{text-align:center} p.small{font-size:16px;color:var(--muted)} p.big{font-size:28px;font-family:var(--f-display)}
+p.caption{text-align:center;color:var(--muted);font-size:15px;margin-top:-6px}
+
+/* boxes */
+.box{border-radius:12px;padding:12px 16px 6px;margin:14px 0;border:2px solid var(--bb);background:var(--bg)}
+.box-title{font-family:var(--f-display);font-weight:600;color:var(--bb);margin-bottom:6px;font-size:18px;display:flex;align-items:center;gap:8px}
+.box-title .ic{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--bb);color:var(--card);font-size:14px;font-family:var(--f-body);font-weight:700;flex:none}
+.box p.sub{font-weight:700;margin:.6em 0 .2em}
+.remember{--bg:var(--hl);--bb:var(--hl-b)} .trick{--bg:var(--tip);--bb:var(--tip-b)} .mistake{--bg:var(--bad);--bb:var(--bad-b)}
+.example{--bg:var(--ex);--bb:var(--ex-b)} .answer{--bg:var(--ok);--bb:var(--ok-b)} .fact{--bg:var(--why);--bb:var(--why-b)}
+.remember .box-title .ic{color:var(--ink)}
+
+/* tables */
+.tbl-wrap{margin:14px 0;overflow-x:auto}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:17px;line-height:1.5;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th{background:var(--c);color:var(--paper);font-weight:600;padding:8px 10px;text-align:start}
+td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:color-mix(in srgb,var(--c) 6%,transparent)}
+@media (max-width:560px){
+  .stack table,.stack thead,.stack tbody,.stack tr,.stack td{display:block;width:100%}
+  .stack table{border:none}
+  .stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .stack tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;background:var(--card)}
+  .stack td{border-top:1px solid var(--line);display:grid;grid-template-columns:7.5em 1fr;gap:8px}
+  .stack td:first-child{border-top:none;background:color-mix(in srgb,var(--c) 12%,transparent)!important;font-weight:600}
+  .stack td::before{content:attr(data-h);font-weight:600;color:var(--c);font-size:14px}
+  .stack td:empty{display:none}
+}
+
+/* widgets */
+.widget{margin:18px 0;border:2px dashed var(--c,var(--a));border-radius:14px;background:var(--stage);padding:10px 12px 12px}
+.widget figcaption{font-family:var(--f-display);font-weight:600;color:var(--c,var(--a));font-size:17px;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.widget figcaption::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 25%,transparent);flex:none}
+.stage{display:grid;gap:8px;justify-items:center}
+.svg{width:100%;max-width:440px;height:auto;overflow:visible}
+canvas{width:100%;max-width:600px;height:auto;display:block}
+.controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
+.btn{font:inherit;font-size:16px;font-weight:600;border:none;border-radius:999px;padding:9px 18px;background:var(--c,var(--a));color:var(--paper);cursor:pointer;min-height:44px;
+  transition:transform .15s}
+.btn:active{transform:scale(.95)} .btn.ghost{background:transparent;color:var(--c,var(--a));border:2px solid var(--c,var(--a))}
+.say{min-height:2.6em;text-align:center;font-size:17px;line-height:1.6;max-width:520px}
+.big-say{font-size:19px}
+.t-title{font:600 13px var(--f-body);fill:var(--ink)} .t-tick{font:12px var(--f-body);fill:var(--muted)} .t-axis{font:600 12px var(--f-body);fill:var(--ink)}
+.axis line{stroke:var(--ink);stroke-width:2} .grid{stroke:var(--line);stroke-width:1}
+.bar-lbl{font:700 15px var(--f-body);fill:var(--ink);transition:opacity .3s}
+.glass-line{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.water-fill{fill:var(--water)}
+.lvl-line{stroke:var(--water2);stroke-width:3}
+.stone{fill:var(--muted);stroke:var(--ink);stroke-width:1.5}
+.lineplot{fill:none;stroke:var(--gas);stroke-width:4;stroke-dasharray:400;stroke-dashoffset:400}
+.lineplot.drawn{transition:stroke-dashoffset 1.6s ease;stroke-dashoffset:0}
+.dot{fill:var(--gas)}
+.read{stroke:var(--a);stroke-width:3;stroke-dasharray:6 5;opacity:0;transition:opacity .4s}
+.read.on{opacity:1;animation:dash 1.2s linear}
+@keyframes dash{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+.hit,.hit2{fill:none;stroke:var(--bad-b);stroke-width:3;opacity:0;transition:opacity .3s}
+.hit.on,.hit2.on{opacity:1}
+.sight{stroke:var(--bad-b);stroke-width:2;stroke-dasharray:5 4} .sight.ok{stroke:var(--ok-b)}
+.eye ellipse{fill:var(--card)}
+.mark{stroke:var(--bad-b);stroke-width:2.5} .mark-t{font:700 13px var(--f-body);fill:var(--bad-b)}
+.cyl-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;width:100%}
+.cyl-row .svg{max-width:220px}
+.cyl-side{display:grid;gap:10px;flex:1 1 200px;min-width:0}
+.cyl-side label{display:grid;gap:4px;font-weight:600;font-size:15px}
+input[type=range]{width:100%;accent-color:var(--c,var(--b))}
+.clay{fill:#4a90d9} .clay-lbl{font:700 16px var(--f-body);fill:#fff}
+.cup-body{fill:color-mix(in srgb,var(--card) 60%,transparent);stroke:var(--ink);stroke-width:3}
+.air{font:600 13px var(--f-body);fill:var(--air)}
+
+/* steps flow */
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center}
+.step{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:6px 10px;font-weight:600;font-size:16px;display:flex;gap:6px;align-items:center}
+.step b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--line);color:var(--ink);font-size:13px}
+.arr{font-style:normal;color:var(--muted);font-weight:700}
+.flow.go .step{animation:lit .5s ease both}
+.flow.go .step:nth-of-type(1){animation-delay:.1s}.flow.go .step:nth-of-type(2){animation-delay:.6s}.flow.go .step:nth-of-type(3){animation-delay:1.1s}
+.flow.go .step:nth-of-type(4){animation-delay:1.6s}.flow.go .step:nth-of-type(5){animation-delay:2.1s}
+@keyframes lit{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1);border-color:var(--a);background:var(--tip)}}
+.flow.go .step b{animation:litb .5s ease both;animation-delay:inherit}
+@keyframes litb{to{background:var(--a);color:var(--paper)}}
+
+/* influence */
+.infl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;width:100%}
+.infl-box{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:8px 12px;text-align:center;flex:1 1 180px;min-width:0}
+.infl-box small{display:block;color:var(--muted);font-size:14px}
+.infl-box.a{border-color:var(--a)} .infl-box.b{border-color:var(--gas)}
+.big-choice{display:flex;gap:6px;justify-content:center;margin-top:4px}
+.big-choice span{padding:3px 10px;border-radius:999px;border:1px solid var(--line);font-weight:600;transition:.3s}
+.big-choice span.on{background:var(--a);color:var(--paper);border-color:var(--a)}
+.meter{font-size:18px;font-weight:600} .meter-num{font-family:var(--f-display);font-size:34px;color:var(--gas)}
+.infl-arrow{font-size:26px;color:var(--muted);font-weight:700}
+
+/* raisins */
+.glasses{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.glass-wrap{display:grid;justify-items:center;gap:2px;text-align:center}
+.glass-wrap small{color:var(--muted);font-size:14px;max-width:150px;line-height:1.4}
+.glass{position:relative;width:110px;height:170px;border:3px solid var(--ink);border-top:none;border-radius:0 0 18px 18px;overflow:hidden;
+  background:linear-gradient(to top,var(--water) 85%,transparent 85%)}
+.glass.soda{background:linear-gradient(to top,color-mix(in srgb,var(--juice) 55%,var(--water)) 85%,transparent 85%)}
+.raisin{position:absolute;width:18px;height:12px;border-radius:45%;background:var(--raisin);bottom:6px;left:20px}
+.raisin.r2{left:55px} .raisin.r3{left:75px}
+.raisin.dance{animation:dance 3.2s ease-in-out infinite}
+.raisin.dance.r2{animation-delay:1.1s} .raisin.dance.r3{animation-delay:2.1s}
+@keyframes dance{0%,15%{bottom:6px}50%,60%{bottom:128px}95%,100%{bottom:6px}}
+.raisin.dance::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px dotted #fff;opacity:.9;animation:bub 3.2s ease-in-out infinite;animation-delay:inherit}
+@keyframes bub{0%,45%{opacity:.9}55%,100%{opacity:0}}
+.bubbles{position:absolute;inset:0;background-image:radial-gradient(circle,#fff 2px,transparent 2.5px);background-size:22px 26px;opacity:.75;animation:rise 2.4s linear infinite}
+@keyframes rise{from{background-position:0 0}to{background-position:0 -260px}}
+
+/* slab drop */
+.slab{transition:opacity .35s ease,transform .35s ease}
+
+/* reveal: visible at rest, small pop when it enters */
+.reveal.in{animation:pop .5s ease both}
+@keyframes pop{from{transform:translateY(10px)}to{transform:none}}
+
+footer.end{text-align:center;color:var(--muted);font-size:15px;margin-top:30px}
+@media (max-width:560px){body{font-size:18px} article.topic{padding:4px 14px 10px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.lineplot{stroke-dashoffset:0}}
+.tk{stroke:var(--ink)} .eye{color:var(--ink)} .pupil{fill:var(--ink)}
+
+.svg text{direction:rtl;unicode-bidi:plaintext} .svg text.n{direction:ltr;unicode-bidi:normal}
+
+.bookref{display:flex;gap:10px;align-items:center;background:var(--ex);border-radius:10px;padding:6px 12px;font-size:15px;color:var(--muted);margin:-4px 0 12px}
+.bookref .bk{flex:none;width:18px;height:22px;border:2px solid var(--muted);border-radius:2px 5px 5px 2px;box-shadow:inset 4px 0 0 var(--muted)}
+.tl-glass-line{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.tl-glass{fill:var(--muted)} .tl-liq{fill:var(--water)} .tl-bulb{fill:var(--bad-b);opacity:.8} .tl-plunger{fill:var(--muted)}
+.tl-name{font:600 13px var(--f-body);fill:var(--ink)}
+.tool{cursor:pointer;transition:transform .35s ease,opacity .35s;transform-box:fill-box;transform-origin:50% 100%}
+.tools-svg:has(.tool.on) .tool:not(.on){opacity:.35}
+.tool.on{transform:translateY(-8px) scale(1.06)} .tool.on .tl-name{fill:var(--c,var(--b))}
+.tool:focus-visible{outline:none} .tool:focus-visible .tl-name{text-decoration:underline}
+</style>
+<div dir="rtl" lang="he">
+<header class="topbar"><div class="topbar-in"><span class="brand">המחברת של עופרי</span>
+<nav class="nav" aria-label="חלקי המחברת"><a href="#part-a">חקר מדעי</a><a href="#part-b">נפח</a><a href="#memorize">לזכור</a></nav></div><div id="progress"></div></header>
+<main class="wrap">
+<div class="cover">
+  <h1>המחברת של עופרי</h1>
+  <div class="sub">כל החומר למבחן במדעים</div>
+  <div class="meta">מבחן 1 | שכבת ז׳ | מחצית א׳ | תשפ״ז</div>
+  <div class="tag"><span style="background:var(--a)">החקר המדעי</span><span style="background:var(--b)">נפח</span></div>
+</div>
+<div class="box remember reveal"><div class="box-title"><span class="ic">!</span>איך לומדים מהמחברת?</div><ul><li>המחברת מסודרת <strong>בדיוק לפי הסדר של דף ההכנה למבחן</strong>.</li><li>כל נושא: <strong>הסבר</strong> ← <strong>דוגמה</strong> ← <strong>אנימציה</strong> ← <strong>מה חשוב לזכור</strong> ← <strong>תשובה מוכנה למבחן</strong>.</li><li>כדאי ללמוד <strong>נושא אחד בכל פעם</strong>, ולקרוא אותו בקול עם אבא.</li><li>במסגרות המקווקוות יש <strong>אנימציות</strong> - לחצי על הכפתורים ותראי את הניסוי קורה!</li><li><strong>ריבועים צהובים</strong> ו<strong>ירוקים</strong> - ללמוד בעל פה. <strong>ריבועים אדומים</strong> - טעויות שלא ליפול בהן.</li></ul></div>
+<p class="toc-h" style="--c:var(--a)">חלק א - החקר המדעי</p><nav class="toc" aria-label="חלק א - החקר המדעי"><a href="#a1" style="--c:var(--a)"><b>1</b><span>גורם משפיע וגורם מושפע</span></a><a href="#a2" style="--c:var(--a)"><b>2</b><span>גורמים קבועים</span></a><a href="#a3" style="--c:var(--a)"><b>3</b><span>שאלת חקר</span></a><a href="#a4" style="--c:var(--a)"><b>4</b><span>השערת החקר</span></a><a href="#a5" style="--c:var(--a)"><b>5</b><span>כתיבת מהלך ניסוי</span></a><a href="#a6" style="--c:var(--a)"><b>6</b><span>הצגת תוצאות - טבלה וגרף</span></a><a href="#a7" style="--c:var(--a)"><b>7</b><span>קריאת גרפים (חשוב מאוד!)</span></a><a href="#a8" style="--c:var(--a)"><b>8</b><span>הסקת מסקנות</span></a><a href="#a9" style="--c:var(--a)"><b>9</b><span>חזרות בניסוי</span></a><a href="#a10" style="--c:var(--a)"><b>★</b><span>סיכום: ניסוי "צימוקים רוקדים" מההתחלה עד הסוף</span></a></nav>
+<p class="toc-h" style="--c:var(--b)">חלק ב - נפח</p><nav class="toc" aria-label="חלק ב - נפח"><a href="#b1" style="--c:var(--b)"><b>1</b><span>מה זה נפח?</span></a><a href="#b2" style="--c:var(--b)"><b>2</b><span>יחידות מידה של נפח, והמרת יחידות</span></a><a href="#b3" style="--c:var(--b)"><b>3</b><span>כלים למדידת נפח</span></a><a href="#b4" style="--c:var(--b)"><b>4</b><span>נפח של מוצק בעל צורה הנדסית מוגדרת</span></a><a href="#b5" style="--c:var(--b)"><b>5</b><span>נפח של מוצק בלי צורה מוגדרת</span></a><a href="#b6" style="--c:var(--b)"><b>6</b><span>נפח של נוזלים</span></a><a href="#b7" style="--c:var(--b)"><b>7</b><span>נפח של גזים</span></a><a href="#b8" style="--c:var(--b)"><b>8</b><span>מה קורה לנפח של מוצק כשמשנים לו צורה?</span></a><a href="#b9" style="--c:var(--b)"><b>9</b><span>מה קורה לנפח של נוזל כשמעבירים אותו לכלי אחר?</span></a><a href="#b10" style="--c:var(--b)"><b>10</b><span>מה קורה לנפח של גז כשמעבירים אותו לכלי אחר?</span></a><a href="#b11" style="--c:var(--b)"><b>11</b><span>כיול כלים - הכנת כלי מכויל</span></a><a href="#b12" style="--c:var(--b)"><b>12</b><span>גז תופס מקום</span></a></nav>
+<section class="part" id="part-a" style="--c:var(--a)"><h1 class="part-title" style="--c:var(--a)">חלק א - החקר המדעי</h1><p>מדענים לא מנחשים - הם <strong>בודקים</strong>. כשמדען רוצה לדעת משהו, הוא עושה <strong>ניסוי</strong>. החקר המדעי הוא הדרך המסודרת שבה עושים ניסוי, צעד אחרי צעד.</p><p>אלה השלבים של החקר המדעי, לפי הסדר:</p><ol><li><strong>שאלת חקר</strong> - מה אני רוצה לבדוק?</li><li><strong>השערה</strong> - מה אני חושבת שיקרה, ולמה?</li><li><strong>מהלך ניסוי</strong> - מה אני צריכה, ומה עושים צעד אחרי צעד?</li><li><strong>תוצאות</strong> - מה מדדתי? (בטבלה ובגרף)</li><li><strong>מסקנה</strong> - מה למדתי מהתוצאות? האם ההשערה שלי נכונה?</li></ol><figure class="widget reveal" data-w="steps"><figcaption>השלבים של החקר המדעי</figcaption><div class="stage">
+    <div class="flow">
+      <div class="step"><b>1</b>שאלת חקר</div><i class="arr">←</i>
+      <div class="step"><b>2</b>השערה</div><i class="arr">←</i>
+      <div class="step"><b>3</b>ניסוי</div><i class="arr">←</i>
+      <div class="step"><b>4</b>תוצאות</div><i class="arr">←</i>
+      <div class="step"><b>5</b>מסקנה</div>
+    </div></div><div class="controls"><button type="button" class="btn " data-act="play">שוב</button></div></figure><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p>משפט אחד שזוכר את כל הסדר: <strong>"שואלים, משערים, מנסים, רושמים, מסיקים".</strong></p><p>שאלה ← השערה ← ניסוי ← תוצאות ← מסקנה</p></div><p>לאורך כל החלק הזה נשתמש בדוגמה אחת שאת כבר מכירה מהכיתה: <strong>הניסוי "צימוקים רוקדים"</strong>.</p><article class="topic" id="a1"><h2 style="--c:var(--a)">נושא 1: גורם משפיע וגורם מושפע</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמ׳ 10.</span></p><p>בכל ניסוי יש שני "שחקנים" ראשיים:</p><div class="tbl-wrap reveal stack"><table style="--c:var(--a)"><thead><tr><th>המושג</th><th>מה זה?</th><th>בניסוי הצימוקים</th></tr></thead><tbody><tr><td data-h="המושג"><span><strong>גורם משפיע</strong></span></td><td data-h="מה זה?"><span>הדבר ש<strong>אני משנה בכוונה</strong>. אני בוחרת אותו.</span></td><td data-h="בניסוי הצימוקים"><span>סוג הנוזל (מים או משקה מוגז)</span></td></tr><tr><td data-h="המושג"><span><strong>גורם מושפע</strong></span></td><td data-h="מה זה?"><span>הדבר ש<strong>אני מודדת או בודקת</strong>. הוא "התוצאה".</span></td><td data-h="בניסוי הצימוקים"><span>כמה פעמים הצימוקים עולים למעלה</span></td></tr></tbody></table></div><figure class="widget reveal" data-w="influence"><figcaption>משפיע ← מושפע: משנים את הנוזל, ורואים מה קורה לצימוקים</figcaption><div class="stage">
+    <div class="infl">
+      <div class="infl-box a"><small>גורם משפיע (אני משנה)</small><div class="big-choice"><span data-v="water" class="on">מים</span><span data-v="soda">משקה מוגז</span></div></div>
+      <div class="infl-arrow">←</div>
+      <div class="infl-box b"><small>גורם מושפע (אני מודדת)</small><div class="meter"><span class="meter-num">0</span> עליות</div></div>
+    </div></div><div class="controls"><button type="button" class="btn " data-act="toggle">החליפי נוזל</button></div></figure><p>הגורם המשפיע <strong>גורם</strong> לשינוי. הגורם המושפע <strong>משתנה בגללו</strong>.</p><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p><strong>משפיע = מה שאני משנה.</strong> (מ-ש-נ-ה, כמו מ-ש-פ-י-ע)</p><p><strong>מושפע = מה שאני מודדת.</strong> (מ-ו-ד-ד-ת, כמו מ-ו-ש-פ-ע - שתיהן עם ו')</p><p>אפשר גם לבדוק במשפט: <strong>"ה___ משפיע על ה___"</strong>. מה שבא ראשון = משפיע. מה שבא אחרי "על" = מושפע.</p></div><h3>איך מוצאים אותם בשאלת חקר?</h3><p>שאלת חקר בנויה כך: <strong>כיצד משפיע [גורם משפיע] על [גורם מושפע]?</strong></p><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p>שאלה: "כיצד משפיעה <strong>טמפרטורת המים</strong> על <strong>זמן ההמסה של הסוכר</strong>?"</p><ul><li>גורם משפיע: טמפרטורת המים (אני בוחרת: מים קרים, פושרים, חמים).</li><li>גורם מושפע: הזמן עד שהסוכר נמס (אני מודדת בשעון עצר).</li></ul></div><div class="tbl-wrap reveal stack"><table style="--c:var(--a)"><thead><tr><th>הניסוי</th><th>גורם משפיע</th><th>גורם מושפע</th></tr></thead><tbody><tr><td data-h="הניסוי"><span>השקיית צמח בכמויות מים שונות ומדידת הגובה שלו</span></td><td data-h="גורם משפיע"><span>כמות המים</span></td><td data-h="גורם מושפע"><span>גובה הצמח</span></td></tr><tr><td data-h="הניסוי"><span>קוביית קרח על צלחת מתכת ועל צלחת פלסטיק</span></td><td data-h="גורם משפיע"><span>החומר של הצלחת</span></td><td data-h="גורם מושפע"><span>הזמן עד שהקרח נמס</span></td></tr><tr><td data-h="הניסוי"><span>כדור שמתגלגל ממדרון בגבהים שונים</span></td><td data-h="גורם משפיע"><span>גובה המדרון</span></td><td data-h="גורם מושפע"><span>מהירות הכדור</span></td></tr><tr><td data-h="הניסוי"><span>גודל כוס ותה חם</span></td><td data-h="גורם משפיע"><span>גודל הכוס</span></td><td data-h="גורם מושפע"><span>מהירות ההתקררות של התה</span></td></tr></tbody></table></div></article><article class="topic" id="a2"><h2 style="--c:var(--a)">נושא 2: גורמים קבועים</h2><p><strong>גורמים קבועים</strong> הם כל הדברים ש<strong>נשארים בדיוק אותו דבר</strong> בכל חלקי הניסוי. משנים <strong>רק דבר אחד</strong> - את הגורם המשפיע. כל השאר - זהה.</p><p><strong>למה זה חשוב?</strong> אם אני משנה כמה דברים ביחד, אני לא יכולה לדעת <strong>מה</strong> גרם לתוצאה. כזה ניסוי נקרא ניסוי "לא הוגן".</p><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p>בניסוי הצימוקים, הגורמים הקבועים הם:</p><ul><li>אותו סוג כוס (2 כוסות זהות)</li><li>אותה כמות נוזל בכל כוס (למשל 200 מ״ל)</li><li>אותו מספר צימוקים (למשל 5 בכל כוס)</li><li>אותו זמן ספירה (למשל 5 דקות)</li></ul></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>דני שם בכוס אחת <strong>200 מ״ל מים ו-5 צימוקים</strong>, ובכוס השנייה <strong>100 מ״ל משקה מוגז ו-10 צימוקים</strong>.</p><p><strong>מה הטעות?</strong> דני שינה <strong>שלושה דברים ביחד</strong>: סוג הנוזל, כמות הנוזל ומספר הצימוקים. לכן אי אפשר לדעת מה גרם להבדל.</p><p><strong>איך מתקנים?</strong> משאירים את כמות הנוזל ואת מספר הצימוקים <strong>זהים</strong> בשתי הכוסות, ומשנים <strong>רק</strong> את סוג הנוזל.</p></div><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p><strong>ניסוי הוגן = משנים רק דבר אחד.</strong></p><p>כדי למצוא גורמים קבועים, שאלי את עצמך: "מה עוד יכול להשפיע על התוצאה?" - כל הדברים האלה צריכים להיות זהים.</p></div></article><article class="topic" id="a3"><h2 style="--c:var(--a)">נושא 3: שאלת חקר</h2><p><strong>שאלת חקר</strong> היא שאלה שבודקת <strong>איך הגורם המשפיע משפיע על הגורם המושפע</strong>. אפשר לענות עליה בעזרת ניסוי ומדידה.</p><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p class="sub">התבנית של שאלת חקר:</p><p><strong>כיצד משפיע/ה ______ (הגורם המשפיע) על ______ (הגורם המושפע)?</strong></p></div><p>שאלת חקר טובה צריכה:</p><ul><li>לכלול <strong>גורם משפיע</strong> וגם <strong>גורם מושפע</strong>.</li><li>שאפשר יהיה <strong>לבדוק אותה בניסוי ולמדוד</strong> את התוצאה.</li></ul><div class="tbl-wrap reveal stack"><table style="--c:var(--a)"><thead><tr><th>השאלה</th><th>שאלת חקר?</th><th>למה?</th></tr></thead><tbody><tr><td data-h="השאלה"><span>כיצד משפיעה כמות המלח במים על זמן הרתיחה שלהם?</span></td><td data-h="שאלת חקר?"><span><strong>כן</strong></span></td><td data-h="למה?"><span>יש משפיע (כמות המלח) ומושפע (זמן הרתיחה), ואפשר למדוד.</span></td></tr><tr><td data-h="השאלה"><span>כיצד משפיע גובה המדרון על המהירות של כדור?</span></td><td data-h="שאלת חקר?"><span><strong>כן</strong></span></td><td data-h="למה?"><span>יש משפיע (גובה) ומושפע (מהירות).</span></td></tr><tr><td data-h="השאלה"><span>מהו הצמח היפה ביותר בגינה?</span></td><td data-h="שאלת חקר?"><span><strong>לא</strong></span></td><td data-h="למה?"><span>"יפה" זו דעה. אי אפשר למדוד את זה.</span></td></tr><tr><td data-h="השאלה"><span>מה הצבע של צימוק?</span></td><td data-h="שאלת חקר?"><span><strong>לא</strong></span></td><td data-h="למה?"><span>זו שאלה של מידע. אין בה משהו שמשפיע על משהו אחר.</span></td></tr></tbody></table></div><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p>בודקים אם <strong>כמות האור</strong> משפיעה על <strong>הצמיחה של צמח</strong>.</p><p>שאלת חקר: <strong>כיצד משפיעה כמות האור על הצמיחה של הצמח?</strong></p><p>בניסוי הצימוקים: <strong>כיצד משפיע סוג הנוזל על תנועת הצימוקים?</strong></p></div></article><article class="topic" id="a4"><h2 style="--c:var(--a)">נושא 4: השערת החקר</h2><p><strong>השערה</strong> היא <strong>תשובה אפשרית</strong> לשאלת החקר - מה אני <strong>חושבת</strong> שיקרה, <strong>לפני</strong> שעשיתי את הניסוי. השערה טובה תמיד כוללת <strong>הסבר</strong> - מילה "<strong>כי</strong>".</p><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p class="sub">התבנית של השערה:</p><p><strong>ככל ש______ (משפיע) כך ______ (מושפע), כי ______ (הסבר).</strong></p><p>או: <strong>ב______ ה______ יהיה יותר / פחות מאשר ב______, כי ______.</strong></p></div><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p>שאלה: כיצד משפיעה הטמפרטורה של המים על זמן ההמסה של סוכר?</p><p>השערה: <strong>ככל שהמים חמים יותר, כך הסוכר יימס מהר יותר, כי</strong> סוכר נמס מהר בתה חם.</p><p>בניסוי הצימוקים: <strong>במשקה מוגז הצימוקים יעלו לפני השטח יותר פעמים מאשר במים, כי</strong> במשקה מוגז יש בועות גז שנדבקות לצימוקים ומרימות אותם.</p></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><ul><li>"הסוכר יימס." ← זו <strong>לא</strong> השערה טובה: אין בה קשר בין משפיע למושפע, ואין "כי".</li><li>"זה ניסוי מעניין." ← זו דעה, לא השערה.</li><li>"כיצד משפיעה הטמפרטורה על הסוכר?" ← זו <strong>שאלה</strong>, לא השערה. השערה היא <strong>תשובה</strong>.</li><li>השערה בלי "כי" ← חסר ההסבר, ומאבדים נקודות!</li></ul></div><div class="box fact reveal"><div class="box-title"><span class="ic">?</span>שימי לב</div><p>השערה <strong>לא חייבת להיות נכונה!</strong> בסוף הניסוי בודקים אם היא נכונה או לא. גם השערה שלא התאמתה היא חלק תקין מהמדע - למדנו משהו חדש.</p></div></article><article class="topic" id="a5"><h2 style="--c:var(--a)">נושא 5: כתיבת מהלך ניסוי</h2><p><strong>מהלך ניסוי</strong> הוא "מתכון" - הוראות מסודרות, כך שכל אחד יוכל לעשות את אותו ניסוי בדיוק.</p><p>במהלך ניסוי כותבים:</p><ol><li><strong>רשימת חומרים וכלים</strong> - מה צריך.</li><li><strong>שלבים ממוספרים</strong> לפי הסדר (1, 2, 3...).</li><li><strong>כמויות מדויקות</strong> - כמה מ״ל, כמה צימוקים, כמה דקות.</li><li><strong>מה משנים</strong> (הגורם המשפיע) ו<strong>מה מודדים</strong> (הגורם המושפע), ובאיזה כלי מודדים.</li><li>מה <strong>נשאר קבוע</strong>.</li><li><strong>כמה פעמים חוזרים</strong> על הניסוי (חזרות).</li></ol><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה: מהלך הניסוי "צימוקים רוקדים"</div><p class="sub">חומרים וכלים:</p><p>2 כוסות זהות, מים, משקה מוגז, צימוקים, משורה, שעון עצר.</p><p>(לא צריך: מספריים, מלח - הם לא קשורים לניסוי.)</p><p class="sub">מהלך:</p><ol><li>לוקחים 2 כוסות זהות.</li><li>בעזרת משורה מוזגים לכל כוס <strong>אותה כמות</strong> נוזל (200 מ״ל): לכוס אחת מים, ולכוס השנייה משקה מוגז.</li><li>מכניסים לכל כוס <strong>אותו מספר</strong> צימוקים (5).</li><li>מפעילים שעון עצר וסופרים במשך 5 דקות כמה פעמים הצימוקים עולים לפני השטח.</li><li>רושמים את התוצאות בטבלה.</li><li>חוזרים על הניסוי 3 פעמים.</li></ol></div><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p>כתבי את המהלך כך שגם ילד שלא היה בכיתה יוכל לעשות את הניסוי רק לפי מה שכתבת.</p></div></article><article class="topic" id="a6"><h2 style="--c:var(--a)">נושא 6: הצגת תוצאות - טבלה וגרף</h2><h3>טבלה</h3><p>את התוצאות רושמים קודם ב<strong>טבלה</strong>. בטבלה יש:</p><ul><li><strong>כותרת</strong> לטבלה.</li><li>עמודה ל<strong>גורם המשפיע</strong> (מה שינינו).</li><li>עמודה/עמודות ל<strong>גורם המושפע</strong> (מה מדדנו) - ולכל חזרה עמודה משלה.</li><li>עמודת <strong>ממוצע</strong>.</li><li><strong>יחידות מידה</strong> (שניות, מ״ל, ס״מ...).</li></ul><div class="tbl-wrap reveal"><table style="--c:var(--a)"><thead><tr><th>סוג הנוזל</th><th>חזרה 1</th><th>חזרה 2</th><th>חזרה 3</th><th>ממוצע</th></tr></thead><tbody><tr><td data-h="סוג הנוזל"><span>מים</span></td><td data-h="חזרה 1"><span>0</span></td><td data-h="חזרה 2"><span>0</span></td><td data-h="חזרה 3"><span>0</span></td><td data-h="ממוצע"><span>0</span></td></tr><tr><td data-h="סוג הנוזל"><span>סודה</span></td><td data-h="חזרה 1"><span>9</span></td><td data-h="חזרה 2"><span>11</span></td><td data-h="חזרה 3"><span>10</span></td><td data-h="ממוצע"><span>10</span></td></tr><tr><td data-h="סוג הנוזל"><span>קולה</span></td><td data-h="חזרה 1"><span>15</span></td><td data-h="חזרה 2"><span>13</span></td><td data-h="חזרה 3"><span>14</span></td><td data-h="ממוצע"><span>14</span></td></tr></tbody></table></div><p class="center small"><strong>טבלה: השפעת סוג הנוזל על מספר העליות של הצימוקים (במשך 5 דקות)</strong></p><h3>איך מחשבים ממוצע?</h3><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>ממוצע = מחברים את כל התוצאות, ומחלקים במספר התוצאות.</strong></p><p>סודה: <bdi dir="ltr" class="ltr">9 + 11 + 10 = 30</bdi>, ואז <bdi dir="ltr" class="ltr">30 ÷ 3 = 10</bdi></p><p>קולה: <bdi dir="ltr" class="ltr">15 + 13 + 14 = 42</bdi>, ואז <bdi dir="ltr" class="ltr">42 ÷ 3 = 14</bdi></p></div><h3>גרף</h3><p>אחרי הטבלה מציירים <strong>גרף</strong>, כדי לראות את התוצאות "בתמונה אחת". יש שני סוגים עיקריים:</p><div class="tbl-wrap reveal stack"><table style="--c:var(--a)"><thead><tr><th>סוג הגרף</th><th>מתי משתמשים?</th><th>דוגמה</th></tr></thead><tbody><tr><td data-h="סוג הגרף"><span><strong>גרף עמודות</strong></span></td><td data-h="מתי משתמשים?"><span>כשהגורם המשפיע הוא <strong>סוגים / שמות</strong> (לא מספרים).</span></td><td data-h="דוגמה"><span>סוג הנוזל: מים, סודה, קולה</span></td></tr><tr><td data-h="סוג הגרף"><span><strong>גרף קווי</strong></span></td><td data-h="מתי משתמשים?"><span>כשהגורם המשפיע הוא <strong>מספרים</strong> שעולים בהדרגה.</span></td><td data-h="דוגמה"><span>טמפרטורה: 20, 30, 40, 50 מעלות</span></td></tr></tbody></table></div><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p class="sub">כללי הזהב של גרף:</p><ul><li><strong>ציר אופקי (למטה, שוכב)</strong> = <strong>הגורם המשפיע</strong> (מה שינינו).</li><li><strong>ציר אנכי (בצד, עומד)</strong> = <strong>הגורם המושפע</strong> (מה מדדנו).</li><li>לכל ציר כותבים <strong>שם</strong> ו<strong>יחידות מידה</strong>.</li><li>לגרף כותבים <strong>כותרת</strong>: "השפעת ___ על ___".</li><li>המספרים על הציר עולים <strong>במרווחים שווים</strong> (0, 2, 4, 6...).</li></ul></div><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p><strong>הציר ששוכב על הרצפה = מה שאני בוחרת (משפיע).</strong></p><p><strong>הציר שעומד = מה ש"צומח" מהניסוי - התוצאה (מושפע).</strong></p></div><figure class="widget reveal" data-w="bar"><figcaption>גרף עמודות שגדל מהתוצאות</figcaption><div class="stage">
+    <svg viewBox="0 0 360 250" class="svg">
+      <text x="180" y="18" text-anchor="middle" class="t-title">השפעת סוג הנוזל על מספר העליות של הצימוקים</text>
+      <g class="axis"><line x1="60" y1="210" x2="340" y2="210"/><line x1="340" y1="40" x2="340" y2="210"/></g>
+      <text x="350" y="214" class="t-tick n" text-anchor="start">0</text><line x1="60" x2="340" y1="210" y2="210" class="grid"/><text x="350" y="174" class="t-tick n" text-anchor="start">4</text><line x1="60" x2="340" y1="170" y2="170" class="grid"/><text x="350" y="134" class="t-tick n" text-anchor="start">8</text><line x1="60" x2="340" y1="130" y2="130" class="grid"/><text x="350" y="94" class="t-tick n" text-anchor="start">12</text><line x1="60" x2="340" y1="90" y2="90" class="grid"/><text x="350" y="54" class="t-tick n" text-anchor="start">16</text><line x1="60" x2="340" y1="50" y2="50" class="grid"/>
+      <rect class="bar" data-v="0" x="255" width="55" y="210" height="0" fill="#9ecae1"/>
+      <rect class="bar" data-v="10" x="170" width="55" y="210" height="0" fill="#4292c6"/>
+      <rect class="bar" data-v="14" x="85" width="55" y="210" height="0" fill="#08519c"/>
+      <text class="bar-lbl" x="282" y="205" text-anchor="middle">0</text>
+      <text class="bar-lbl" x="197" y="205" text-anchor="middle">10</text>
+      <text class="bar-lbl" x="112" y="205" text-anchor="middle">14</text>
+      <text x="282" y="228" text-anchor="middle" class="t-tick">מים</text>
+      <text x="197" y="228" text-anchor="middle" class="t-tick">סודה</text>
+      <text x="112" y="228" text-anchor="middle" class="t-tick">קולה</text>
+      <text x="200" y="246" text-anchor="middle" class="t-axis">סוג הנוזל (גורם משפיע) ←  ציר אופקי</text>
+      <text x="22" y="125" text-anchor="middle" class="t-axis" transform="rotate(-90 22 125)">מספר העליות (מושפע)</text>
+    </svg></div><div class="controls"><button type="button" class="btn " data-act="play">ציירי שוב</button></div></figure><p class="caption">גרף עמודות: הממוצעים מניסוי הצימוקים. סוג הנוזל למטה, מספר העליות בצד.</p></article><article class="topic" id="a7"><h2 style="--c:var(--a)">נושא 7: קריאת גרפים (חשוב מאוד!)</h2><p>במבחן יש דגש על <strong>קריאת גרפים</strong>. הנה הגרף של איתי, שמדד כמה זמן לוקח לקוביית סוכר להימס במים בטמפרטורות שונות:</p><figure class="widget reveal" data-w="line"><figcaption>איך קוראים גרף - צעד אחרי צעד</figcaption><div class="stage">
+    <svg viewBox="0 0 360 260" class="svg">
+      <text x="180" y="18" text-anchor="middle" class="t-title">השפעת טמפרטורת המים על זמן ההמסה</text>
+      <line x1="40" x2="330" y1="220" y2="220" class="grid"/><text x="34" y="224" text-anchor="end" class="t-tick n">0</text><line x1="40" x2="330" y1="184" y2="184" class="grid"/><text x="34" y="188" text-anchor="end" class="t-tick n">20</text><line x1="40" x2="330" y1="148" y2="148" class="grid"/><text x="34" y="152" text-anchor="end" class="t-tick n">40</text><line x1="40" x2="330" y1="112" y2="112" class="grid"/><text x="34" y="116" text-anchor="end" class="t-tick n">60</text><line x1="40" x2="330" y1="76" y2="76" class="grid"/><text x="34" y="80" text-anchor="end" class="t-tick n">80</text><line x1="40" x2="330" y1="40" y2="40" class="grid"/><text x="34" y="44" text-anchor="end" class="t-tick n">100</text>
+      <text x="40" y="236" text-anchor="middle" class="t-tick n">10</text><text x="98" y="236" text-anchor="middle" class="t-tick n">20</text><text x="156" y="236" text-anchor="middle" class="t-tick n">30</text><text x="214" y="236" text-anchor="middle" class="t-tick n">40</text><text x="272" y="236" text-anchor="middle" class="t-tick n">50</text><text x="330" y="236" text-anchor="middle" class="t-tick n">60</text>
+      <g class="axis"><line x1="40" y1="220" x2="330" y2="220"/><line x1="40" y1="40" x2="40" y2="220"/></g>
+      <polyline class="lineplot" points="98,58 156,94 214,130 272,166" />
+      <circle class="dot" cx="98" cy="58" r="5"/><circle class="dot" cx="156" cy="94" r="5"/><circle class="dot" cx="214" cy="130" r="5"/><circle class="dot" cx="272" cy="166" r="5"/>
+      <line class="read r1" x1="214" y1="220" x2="214" y2="130"/>
+      <line class="read r2" x1="214" y1="130" x2="40" y2="130"/>
+      <circle class="hit" cx="40" cy="130" r="9"/>
+      <line class="read r3" x1="185" y1="220" x2="185" y2="112"/>
+      <line class="read r4" x1="185" y1="112" x2="40" y2="112"/>
+      <circle class="hit2" cx="40" cy="112" r="9"/>
+      <text x="185" y="254" text-anchor="middle" class="t-axis">טמפרטורת המים (מעלות) - משפיע</text>
+      <text x="12" y="130" text-anchor="middle" class="t-axis" transform="rotate(-90 12 130)">זמן ההמסה (שניות) - מושפע</text>
+    </svg>
+    <div class="say" aria-live="polite">לחצי על כפתור כדי לראות איך קוראים את הגרף.</div></div><div class="controls"><button type="button" class="btn " data-act="read40">40 מעלות = ? שניות</button><button type="button" class="btn " data-act="read35">ומה עם 35 מעלות?</button></div></figure><p class="caption">גרף קווי: ככל שהמים חמים יותר - הסוכר נמס מהר יותר.</p><h3>שאלה מסוג 1: "כמה זמן לקח במים של 40 מעלות?"</h3><ol><li>מוצאים את <strong>40</strong> על הציר האופקי (למטה).</li><li><strong>עולים ישר למעלה</strong> עד שפוגשים את הקו (חץ 1).</li><li><strong>פונים הצידה</strong> אל הציר האנכי וקוראים את המספר (חץ 2).</li><li>התשובה: <strong>50 שניות</strong>.</li></ol><h3>שאלה מסוג 2: "באיזו טמפרטורה הסוכר נמס תוך 70 שניות?"</h3><p>עושים <strong>הפוך</strong>: מוצאים 70 על הציר האנכי, הולכים הצידה עד הקו, ויורדים למטה. התשובה: <strong>30 מעלות</strong>.</p><h3>שאלה מסוג 3: "מה אפשר ללמוד מהגרף?" (המגמה)</h3><p>מסתכלים לאן הקו הולך:</p><ul><li>קו ש<strong>יורד</strong> ← ככל שהמשפיע <strong>גדל</strong>, המושפע <strong>קטן</strong>.</li><li>קו ש<strong>עולה</strong> ← ככל שהמשפיע <strong>גדל</strong>, המושפע <strong>גדל</strong> גם הוא.</li><li>קו <strong>שטוח</strong> (ישר לרוחב) ← למשפיע <strong>אין השפעה</strong>.</li></ul><p>בגרף של איתי הקו יורד: <strong>ככל שהמים חמים יותר, כך הזמן קצר יותר - כלומר הסוכר נמס מהר יותר.</strong></p><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>הקו יורד, אבל זה <strong>לא</strong> אומר שהסוכר נמס "לאט יותר"! הציר האנכי הוא <strong>זמן</strong>. זמן קצר = <strong>מהר</strong>. תמיד בדקי <strong>מה כתוב על הציר</strong>.</p></div><h3>שאלה מסוג 4: "מה יקרה בנקודה שלא נבדקה?"</h3><p>איתי לא בדק מים של <strong>35 מעלות</strong>. 35 נמצא <strong>באמצע</strong> בין 30 ל-40. לכן גם הזמן יהיה <strong>באמצע</strong> בין 70 ל-50, כלומר בערך <strong>60 שניות</strong>.</p><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p>נקודה שלא נבדקה ← מוצאים אותה <strong>על הקו</strong>, בין שתי הנקודות שליד. "באמצע בציר אחד = באמצע גם בציר השני".</p></div></article><article class="topic" id="a8"><h2 style="--c:var(--a)">נושא 8: הסקת מסקנות</h2><p><strong>מסקנה</strong> היא מה <strong>שלמדנו מהתוצאות</strong>. המסקנה עונה על <strong>שאלת החקר</strong>, ובודקת אם <strong>ההשערה</strong> הייתה נכונה.</p><figure class="widget reveal" data-w="plasticine"><figcaption>משנים צורה לפלסטלינה - והנפח?</figcaption><div class="stage">
+    <svg viewBox="0 0 300 180" class="svg">
+      <ellipse class="clay" cx="150" cy="95" rx="50" ry="50"/>
+      <text class="clay-lbl" x="150" y="102" text-anchor="middle">30 סמ״ק</text>
+    </svg>
+    <div class="say" aria-live="polite">כדור פלסטלינה: <b>30 סמ״ק</b></div></div><div class="controls"><button type="button" class="btn " data-act="pita">שטחי לפיתה</button><button type="button" class="btn " data-act="snake">גלגלי לנחש</button><button type="button" class="btn " data-act="ball">חזרה לכדור</button></div></figure><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p class="sub">התבנית של מסקנה:</p><p><strong>ככל ש______ כך ______.</strong></p><p><strong>ההשערה שלי (נכונה / לא נכונה).</strong></p></div><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p>ניסוי הצימוקים: <strong>סוג הנוזל משפיע על תנועת הצימוקים. במשקה מוגז הצימוקים עולים יותר פעמים מאשר במים.</strong> ההשערה שלי נכונה.</p><p>הגרף של איתי: <strong>ככל שטמפרטורת המים גבוהה יותר, כך הסוכר נמס מהר יותר.</strong></p></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>מסקנה כותבים <strong>רק לפי התוצאות</strong> של הניסוי, ולא לפי מה שחשבנו או רצינו שיקרה.</p></div></article><article class="topic" id="a9"><h2 style="--c:var(--a)">נושא 9: חזרות בניסוי</h2><p><strong>חזרות</strong> = עושים את אותו ניסוי <strong>כמה פעמים</strong> (בדרך כלל 3), ואז מחשבים <strong>ממוצע</strong>.</p><figure class="widget reveal" data-w="pour"><figcaption>מוזגים 300 מ״ל מיץ מבקבוק לכוס צרה</figcaption><div class="stage">
+    <svg viewBox="0 0 320 240" class="svg">
+      <g class="bottle-g"><path d="M40 60 L40 210 L130 210 L130 60 Z" class="glass-line"/>
+        <rect class="b-liq" x="42" y="110" width="86" height="98" fill="#f4a261"/></g>
+      <rect class="stream" x="183" y="40" width="6" height="0" fill="#f4a261"/>
+      <path d="M200 50 L200 210 L240 210 L240 50" class="glass-line"/>
+      <rect class="c-liq" x="202" y="208" width="36" height="0" fill="#f4a261"/>
+      <text class="b-lbl" x="85" y="230" text-anchor="middle">300 מ״ל</text>
+      <text class="c-lbl" x="220" y="230" text-anchor="middle">0 מ״ל</text>
+    </svg>
+    <div class="say" aria-live="polite"></div></div><div class="controls"><button type="button" class="btn " data-act="pour">מזגי</button><button type="button" class="btn ghost" data-act="reset">מההתחלה</button></div></figure><p><strong>למה עושים חזרות?</strong> כי בכל מדידה יכולה לקרות טעות קטנה. אם עושים כמה פעמים, <strong>התוצאות אמינות יותר</strong> - אפשר לסמוך עליהן.</p><div class="box answer reveal"><div class="box-title"><span class="ic">✓</span>תשובה מוכנה למבחן</div><p class="sub">למה עושים חזרות בניסוי?</p><p><strong>כדי שהתוצאות יהיו אמינות יותר.</strong> אם יש טעות באחת המדידות, החזרות והממוצע "מתקנים" אותה.</p><p class="sub">איתי מדד כל טמפרטורה רק פעם אחת. מה כדאי לו לשפר?</p><p><strong>לעשות חזרות</strong> - למשל 3 פעמים לכל טמפרטורה - <strong>ולחשב ממוצע</strong>.</p></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>חזרות <strong>לא</strong> נועדו "כדי שהניסוי יהיה ארוך יותר" ולא "כדי להשתמש ביותר חומרים". רק <strong>אמינות</strong>!</p></div></article><article class="topic" id="a10"><h2 style="--c:var(--a)">סיכום: ניסוי "צימוקים רוקדים" מההתחלה עד הסוף</h2><p>זה הניסוי שעשיתם בכיתה. כדאי לדעת אותו <strong>בעל פה</strong> - הוא יכול להופיע במבחן.</p><div class="tbl-wrap reveal stack"><table style="--c:var(--a)"><thead><tr><th>שלב</th><th>בניסוי הצימוקים</th></tr></thead><tbody><tr><td data-h="שלב"><span><strong>שאלת חקר</strong></span></td><td data-h="בניסוי הצימוקים"><span>כיצד משפיע סוג הנוזל על תנועת הצימוקים (מספר הפעמים שהם עולים לפני השטח)?</span></td></tr><tr><td data-h="שלב"><span><strong>גורם משפיע</strong></span></td><td data-h="בניסוי הצימוקים"><span>סוג הנוזל (מים / משקה מוגז)</span></td></tr><tr><td data-h="שלב"><span><strong>גורם מושפע</strong></span></td><td data-h="בניסוי הצימוקים"><span>מספר הפעמים שהצימוקים עולים לפני השטח</span></td></tr><tr><td data-h="שלב"><span><strong>גורמים קבועים</strong></span></td><td data-h="בניסוי הצימוקים"><span>כוסות זהות, אותה כמות נוזל, אותו מספר צימוקים, אותו זמן ספירה</span></td></tr><tr><td data-h="שלב"><span><strong>השערה</strong></span></td><td data-h="בניסוי הצימוקים"><span>במשקה מוגז הצימוקים יעלו יותר פעמים מאשר במים, כי יש בו בועות גז שנדבקות לצימוקים ומרימות אותם.</span></td></tr><tr><td data-h="שלב"><span><strong>תוצאות</strong></span></td><td data-h="בניסוי הצימוקים"><span>במים הצימוקים נשארו למטה (0). במשקה המוגז הם עלו וירדו שוב ושוב.</span></td></tr><tr><td data-h="שלב"><span><strong>מסקנה</strong></span></td><td data-h="בניסוי הצימוקים"><span>סוג הנוזל משפיע: במשקה מוגז הצימוקים עולים יותר. ההשערה נכונה.</span></td></tr><tr><td data-h="שלב"><span><strong>חזרות</strong></span></td><td data-h="בניסוי הצימוקים"><span>3 פעמים לכל נוזל, ואז ממוצע.</span></td></tr></tbody></table></div><figure class="widget reveal" data-w="raisins"><figcaption>צימוקים רוקדים: מים מול משקה מוגז</figcaption><div class="stage">
+    <div class="glasses">
+      <div class="glass-wrap"><div class="glass water"><div class="raisin still"></div><div class="raisin still r2"></div></div><b>מים</b><small>אין בועות - הצימוקים למטה</small></div>
+      <div class="glass-wrap"><div class="glass soda"><div class="bubbles"></div><div class="raisin dance"></div><div class="raisin dance r2"></div><div class="raisin dance r3"></div></div><b>משקה מוגז</b><small>הבועות מרימות את הצימוקים</small></div>
+    </div></div></figure><div class="box fact reveal"><div class="box-title"><span class="ic">?</span>למה הצימוקים רוקדים?</div><p>במשקה מוגז יש <strong>גז</strong> (פחמן דו-חמצני) - אלה הבועות.</p><ul><li>הבועות <strong>נדבקות</strong> לקמטים של הצימוק.</li><li>הבועות קלות, והן <strong>מרימות</strong> את הצימוק למעלה, כמו מצופים.</li><li>למעלה הבועות <strong>מתפוצצות</strong> ויוצאות לאוויר.</li><li>בלי הבועות הצימוק <strong>שוקע</strong> בחזרה למטה... ואז נדבקות בועות חדשות, וחוזר חלילה. לכן הוא "רוקד".</li></ul><p>במים רגילים אין בועות, ולכן הצימוק פשוט נשאר למטה.</p></div></article></section><section class="part" id="part-b" style="--c:var(--b)"><h1 class="part-title" style="--c:var(--b)">חלק ב - נפח</h1><p>בחלק הזה נלמד מה זה נפח, איך מודדים אותו, ומה קורה לנפח של <strong>מוצק</strong>, <strong>נוזל</strong> ו<strong>גז</strong> כשמשנים להם צורה או מעבירים אותם לכלי אחר.</p><article class="topic" id="b1"><h2 style="--c:var(--b)">נושא 1: מה זה נפח?</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 56 עד 57.</span></p><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>נפח הוא המקום שהגוף תופס במרחב.</strong></p><p>(זו ההגדרה - צריך לדעת אותה בעל פה, מילה במילה!)</p></div><p>כל דבר שיש בו חומר - תופס מקום. ספר, מים בכוס, ואפילו האוויר בבלון.</p><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><ul><li>נפח המים בכוס = המקום שהמים תופסים בכוס.</li><li>נפח התפוזים בארגז = המקום שהתפוזים תופסים בו.</li><li>נפח החלב בקרטון = 1 ליטר (כתוב על האריזה).</li></ul></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>נפח זה <strong>לא</strong> כמה הגוף שוקל (זו המסה), <strong>לא</strong> הגובה שלו ו<strong>לא</strong> הצבע שלו. נפח = <strong>מקום</strong>.</p></div></article><article class="topic" id="b2"><h2 style="--c:var(--b)">נושא 2: יחידות מידה של נפח, והמרת יחידות</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 57 עד 58.</span></p><p>כמו שאורך מודדים במטרים ובסנטימטרים, גם לנפח יש יחידות מידה:</p><div class="tbl-wrap reveal stack"><table style="--c:var(--b)"><thead><tr><th>יחידה</th><th>קיצור</th><th>למה מתאימה?</th></tr></thead><tbody><tr><td data-h="יחידה"><span>סנטימטר מעוקב</span></td><td data-h="קיצור"><span><strong>סמ״ק</strong></span></td><td data-h="למה מתאימה?"><span>גופים קטנים, בעיקר <strong>מוצקים</strong> (קובייה, מחק)</span></td></tr><tr><td data-h="יחידה"><span>מיליליטר</span></td><td data-h="קיצור"><span><strong>מ״ל</strong></span></td><td data-h="למה מתאימה?"><span>כמויות קטנות של <strong>נוזלים</strong> (כפית תרופה, כוס)</span></td></tr><tr><td data-h="יחידה"><span>ליטר</span></td><td data-h="קיצור"><span><strong>ליטר</strong></span></td><td data-h="למה מתאימה?"><span>כמויות גדולות יותר (בקבוק שתייה, דלי)</span></td></tr><tr><td data-h="יחידה"><span>מטר מעוקב</span></td><td data-h="קיצור"><span><strong>מ״ק</strong></span></td><td data-h="למה מתאימה?"><span>דברים ענקיים (בריכה, מכלית, חדר)</span></td></tr></tbody></table></div><h3>מה זה סמ״ק?</h3><p><strong>סמ״ק</strong> הוא הנפח של קובייה קטנה שהאורך, הרוחב והגובה שלה הם <strong>1 ס״מ</strong> כל אחד. כשאומרים שלגוף יש נפח של 20 סמ״ק, זה אומר ש-20 קוביות קטנות כאלה ייכנסו בו.</p><figure class="widget reveal" data-w="cubes1000"><figcaption>למה 1 ליטר = 1,000 סמ״ק?</figcaption><div class="stage">
+    <svg viewBox="0 0 300 260" class="svg iso" data-a="10" data-b="10" data-h="10"></svg>
+    <div class="say" aria-live="polite"></div></div><div class="controls"><button type="button" class="btn " data-act="play">בני את הקובייה</button></div></figure><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p class="sub">הקשרים בין היחידות - ללמוד בעל פה:</p><p><strong><bdi dir="ltr" class="ltr">1</bdi> סמ״ק = <bdi dir="ltr" class="ltr">1</bdi> מ״ל</strong> (זה אותו דבר בדיוק!)</p><p><strong><bdi dir="ltr" class="ltr">1</bdi> ליטר = <bdi dir="ltr" class="ltr">1,000</bdi> מ״ל = <bdi dir="ltr" class="ltr">1,000</bdi> סמ״ק</strong></p><p><strong><bdi dir="ltr" class="ltr">1</bdi> מ״ק = <bdi dir="ltr" class="ltr">1,000</bdi> ליטר</strong></p></div><h3>איך ממירים?</h3><ul><li>מ<strong>ליטר</strong> ל<strong>מ״ל</strong> (מיחידה גדולה לקטנה) ← <strong>כופלים ב-1,000</strong>. המספר נהיה <strong>גדול</strong> יותר.</li><li>מ<strong>מ״ל</strong> ל<strong>ליטר</strong> (מיחידה קטנה לגדולה) ← <strong>מחלקים ב-1,000</strong>. המספר נהיה <strong>קטן</strong> יותר.</li><li>מ<strong>סמ״ק</strong> ל<strong>מ״ל</strong> ← <strong>לא משנים כלום!</strong> אותו מספר.</li></ul><div class="tbl-wrap reveal stack"><table style="--c:var(--b)"><thead><tr><th>תרגיל</th><th>תשובה</th><th>איך?</th></tr></thead><tbody><tr><td data-h="תרגיל"><span>1 ליטר = ___ מ״ל</span></td><td data-h="תשובה"><span><strong>1,000 מ״ל</strong></span></td><td data-h="איך?"><span>לזכור בעל פה</span></td></tr><tr><td data-h="תרגיל"><span>2 ליטר = ___ מ״ל</span></td><td data-h="תשובה"><span><strong>2,000 מ״ל</strong></span></td><td data-h="איך?"><span><bdi dir="ltr" class="ltr">2 × 1,000</bdi></span></td></tr><tr><td data-h="תרגיל"><span>3,000 מ״ל = ___ ליטר</span></td><td data-h="תשובה"><span><strong>3 ליטר</strong></span></td><td data-h="איך?"><span><bdi dir="ltr" class="ltr">3,000 ÷ 1,000</bdi></span></td></tr><tr><td data-h="תרגיל"><span>50 סמ״ק = ___ מ״ל</span></td><td data-h="תשובה"><span><strong>50 מ״ל</strong></span></td><td data-h="איך?"><span>סמ״ק = מ״ל</span></td></tr><tr><td data-h="תרגיל"><span>חצי ליטר = ___ מ״ל</span></td><td data-h="תשובה"><span><strong>500 מ״ל</strong></span></td><td data-h="איך?"><span>חצי מ-1,000</span></td></tr><tr><td data-h="תרגיל"><span>רבע ליטר = ___ מ״ל</span></td><td data-h="תשובה"><span><strong>250 מ״ל</strong></span></td><td data-h="איך?"><span>רבע מ-1,000</span></td></tr><tr><td data-h="תרגיל"><span>ליטר וחצי (1.5 ליטר) = ___ מ״ל</span></td><td data-h="תשובה"><span><strong>1,500 מ״ל</strong></span></td><td data-h="איך?"><span>1,000 ועוד 500</span></td></tr></tbody></table></div><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p>יחידה <strong>גדולה</strong> ← מספר <strong>קטן</strong>. יחידה <strong>קטנה</strong> ← מספר <strong>גדול</strong>.</p><p>כמו כסף: שקל אחד = 100 אגורות. אותו כסף, רק סופרים אחרת.</p></div><div class="box answer reveal"><div class="box-title"><span class="ic">✓</span>תשובה מוכנה למבחן</div><p class="sub">באיזו יחידה הכי מתאים למדוד?</p><ul><li>בקבוק שתייה גדול ← <strong>ליטר</strong></li><li>כפית תרופה ← <strong>מ״ל</strong></li><li>קובייה קטנה ← <strong>סמ״ק</strong></li><li>בריכה ← <strong>מ״ק</strong></li></ul></div></article><article class="topic" id="b3"><h2 style="--c:var(--b)">נושא 3: כלים למדידת נפח</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 59, ו-62 עד 63 (דיוק המדידה).</span></p><div class="tbl-wrap reveal stack"><table style="--c:var(--b)"><thead><tr><th>הכלי</th><th>למה משתמשים בו?</th></tr></thead><tbody><tr><td data-h="הכלי"><span><strong>סרגל / סרט מדידה</strong></span></td><td data-h="למה משתמשים בו?"><span>למדוד אורך, רוחב וגובה של גוף <strong>בעל צורה הנדסית</strong> (קובייה, תיבה), ואז <strong>לחשב</strong> את הנפח.</span></td></tr><tr><td data-h="הכלי"><span><strong>משורה</strong></span></td><td data-h="למה משתמשים בו?"><span>כלי המדידה <strong>העיקרי לנוזלים</strong>. גליל צר וגבוה עם קווים ומספרים. משמשת גם למדידת נפח של <strong>מוצק בלי צורה מוגדרת</strong> (אבן).</span></td></tr><tr><td data-h="הכלי"><span><strong>מזרק</strong></span></td><td data-h="למה משתמשים בו?"><span>למדוד כמות <strong>קטנה ומדויקת</strong> (תרופה לילד). משמש גם למדידת נפח של <strong>אוויר</strong>.</span></td></tr><tr><td data-h="הכלי"><span><strong>כוס מדידה / כוס כימית</strong></span></td><td data-h="למה משתמשים בו?"><span>למדוד נוזלים, אבל פחות מדויק ממשורה.</span></td></tr><tr><td data-h="הכלי"><span><strong>פיפטה</strong></span></td><td data-h="למה משתמשים בו?"><span>למדוד טיפות וכמויות קטנות מאוד.</span></td></tr></tbody></table></div><figure class="widget reveal" data-w="tools"><figcaption>כלי המדידה במעבדה - לחצי על כלי</figcaption><div class="stage">
+    <svg viewBox="0 0 420 250" class="svg tools-svg">
+      <g class="tool" data-i="0" tabindex="0" role="button" aria-label="משורה">
+        <rect x="18" y="200" width="54" height="10" rx="3" class="tl-glass"/>
+        <path d="M33 30 L33 200 L57 200 L57 30" class="tl-glass-line"/><path d="M29 30 L61 30" class="tl-glass-line"/>
+        <rect x="35" y="110" width="20" height="88" class="tl-liq"/>
+        <line x1="33" x2="42" y1="50" y2="50" class="tk"/><line x1="33" x2="42" y1="70" y2="70" class="tk"/><line x1="33" x2="42" y1="90" y2="90" class="tk"/><line x1="33" x2="42" y1="110" y2="110" class="tk"/><line x1="33" x2="42" y1="130" y2="130" class="tk"/><line x1="33" x2="42" y1="150" y2="150" class="tk"/><line x1="33" x2="42" y1="170" y2="170" class="tk"/><line x1="33" x2="42" y1="190" y2="190" class="tk"/>
+        <text x="45" y="232" text-anchor="middle" class="tl-name">משורה</text></g>
+      <g class="tool" data-i="1" tabindex="0" role="button" aria-label="כוס כימית">
+        <path d="M95 120 L95 205 Q95 210 100 210 L150 210 Q155 210 155 205 L155 120 L160 114" class="tl-glass-line"/>
+        <rect x="97" y="160" width="56" height="48" class="tl-liq"/>
+        <line x1="140" x2="153" y1="140" y2="140" class="tk"/><line x1="140" x2="153" y1="160" y2="160" class="tk"/><line x1="140" x2="153" y1="180" y2="180" class="tk"/>
+        <text x="125" y="232" text-anchor="middle" class="tl-name">כוס כימית</text></g>
+      <g class="tool" data-i="2" tabindex="0" role="button" aria-label="בקבוק קוני">
+        <path d="M205 90 L205 130 L180 205 Q178 210 184 210 L246 210 Q252 210 250 205 L225 130 L225 90" class="tl-glass-line"/>
+        <path d="M186 198 L193 176 L237 176 L244 198 Q245 208 240 208 L190 208 Q185 208 186 198 Z" class="tl-liq"/>
+        <text x="215" y="232" text-anchor="middle" class="tl-name">בקבוק קוני</text></g>
+      <g class="tool" data-i="3" tabindex="0" role="button" aria-label="פיפטה">
+        <ellipse cx="290" cy="62" rx="12" ry="18" class="tl-bulb"/>
+        <path d="M286 78 L286 190 L290 205 L294 190 L294 78" class="tl-glass-line"/>
+        <rect x="287.5" y="150" width="5" height="42" class="tl-liq"/>
+        <text x="290" y="232" text-anchor="middle" class="tl-name">פיפטה</text></g>
+      <g class="tool" data-i="4" tabindex="0" role="button" aria-label="מזרק">
+        <rect x="350" y="40" width="10" height="40" class="tl-plunger"/><rect x="338" y="34" width="34" height="8" rx="2" class="tl-plunger"/>
+        <path d="M343 80 L343 190 L367 190 L367 80" class="tl-glass-line"/>
+        <rect x="345" y="80" width="20" height="8" class="tl-plunger"/>
+        <rect x="345" y="120" width="20" height="68" class="tl-liq"/>
+        <path d="M352 190 L352 205 L358 205 L358 190" class="tl-glass-line"/>
+        <line x1="343" x2="351" y1="100" y2="100" class="tk"/><line x1="343" x2="351" y1="120" y2="120" class="tk"/><line x1="343" x2="351" y1="140" y2="140" class="tk"/><line x1="343" x2="351" y1="160" y2="160" class="tk"/><line x1="343" x2="351" y1="180" y2="180" class="tk"/>
+        <text x="355" y="232" text-anchor="middle" class="tl-name">מזרק</text></g>
+    </svg>
+    <div class="say" aria-live="polite">לחצי על כל כלי כדי לשמוע מה הוא עושה.</div></div><div class="controls"><button type="button" class="btn " data-act="tour">סיור בכל הכלים</button></div></figure><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>שנתות</strong> = הקווים עם המספרים שמסומנים על כלי המדידה. בעזרתן קוראים את הנפח.</p></div><div class="box answer reveal"><div class="box-title"><span class="ic">✓</span>תשובה מוכנה למבחן</div><p class="sub">התאימי כלי מדידה למשימה:</p><ul><li>למדוד 5 מ״ל תרופה לילד ← <strong>מזרק</strong></li><li>למדוד נפח של אבן קטנה ← <strong>משורה</strong> (עם מים)</li><li>למדוד נפח של קופסת נעליים ← <strong>סרגל</strong> (אורך × רוחב × גובה)</li><li>למדוד 80 מ״ל מים לניסוי ← <strong>משורה</strong></li></ul></div><h3>איך קוראים משורה נכון?</h3><ol><li><strong>מעמידים</strong> את המשורה על שולחן ישר.</li><li><strong>מורידים את העיניים לגובה המים</strong> - לא מלמעלה ולא מלמטה, אלא <strong>בדיוק מול פני המים</strong>.</li><li>פני המים במשורה קצת <strong>מעוגלים</strong> (כמו חיוך). קוראים את המספר ב<strong>נקודה הנמוכה</strong> של העיגול.</li></ol><figure class="widget reveal" data-w="cylinder"><figcaption>קריאת משורה: הזיזי את העין!</figcaption><div class="stage">
+    <div class="cyl-row">
+      <svg viewBox="0 0 220 300" class="svg cyl">
+        <g class="scale"></g>
+        <rect x="80" y="40" width="60" height="230" rx="4" class="glass-line"/>
+        <path class="water-fill" d=""/>
+        <g class="eye"><ellipse cx="190" cy="0" rx="18" ry="10" stroke="currentColor" stroke-width="2"/><circle cx="184" cy="0" r="5" class="pupil"/></g>
+        <line class="sight" x1="172" y1="0" x2="110" y2="0"/>
+      </svg>
+      <div class="cyl-side"><label>גובה העין<input type="range" min="-60" max="60" value="-50" class="eye-range" aria-label="גובה העין"></label><div class="say" aria-live="polite"></div></div>
+    </div></div><div class="controls"><button type="button" class="btn " data-act="level">לגובה המים</button></div></figure><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>אם מסתכלים <strong>מלמעלה</strong> או <strong>מלמטה</strong> - קוראים מספר לא נכון. רק <strong>בגובה העיניים</strong>!</p></div><h3>כמה שווה כל קו קטן? (ערך שנתה)</h3><p>לא תמיד כל קו קטן במשורה שווה 1 מ״ל. צריך לבדוק:</p><ol><li>בוחרים <strong>שני מספרים</strong> שכתובים על המשורה, למשל 0 ו-10.</li><li>מחשבים את ההפרש: <bdi dir="ltr" class="ltr">10 - 0 = 10</bdi> מ״ל.</li><li>סופרים כמה <strong>רווחים</strong> (קפיצות) יש ביניהם, למשל 5.</li><li>מחלקים: <bdi dir="ltr" class="ltr">10 ÷ 5 = 2</bdi>. <strong>כל קו קטן = 2 מ״ל.</strong></li></ol><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p>המים הגיעו 2 קווים קטנים מעל ה-30. כל קו = 2 מ״ל. אז: <bdi dir="ltr" class="ltr">30 + 2 + 2 = 34</bdi> מ״ל.</p></div><h3>איזה כלי מדויק יותר?</h3><p>ככל שהכלי <strong>צר יותר</strong> והשנתות שלו <strong>צפופות יותר</strong> (כל קו שווה מעט), כך המדידה <strong>מדויקת יותר</strong>. לכן לכמות קטנה בוחרים כלי <strong>קטן</strong> (משורה קטנה, מזרק), ולכמות גדולה - כלי גדול.</p></article><article class="topic" id="b4"><h2 style="--c:var(--b)">נושא 4: נפח של מוצק בעל צורה הנדסית מוגדרת</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 57 ו-60.</span></p><p><strong>צורה הנדסית מוגדרת</strong> = צורה "מסודרת" שאפשר למדוד בסרגל: <strong>קובייה</strong> או <strong>תיבה</strong> (כמו קופסה, ספר, לבנה).</p><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>נפח = אורך × רוחב × גובה</strong></p><p>מודדים בסרגל בסנטימטרים (ס״מ), והתשובה יוצאת ב<strong>סמ״ק</strong>.</p></div><figure class="widget reveal" data-w="box200"><figcaption>נפח תיבה: 10 × 5 × 4</figcaption><div class="stage">
+    <svg viewBox="0 0 300 230" class="svg iso" data-a="10" data-b="5" data-h="4"></svg>
+    <div class="say" aria-live="polite"></div></div><div class="controls"><button type="button" class="btn " data-act="play">מלאי את התיבה</button></div></figure><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p class="sub">קופסה בצורת תיבה: אורך 10 ס״מ, רוחב 5 ס״מ, גובה 4 ס״מ.</p><p>נפח = <bdi dir="ltr" class="ltr">10 × 5 × 4 = 200</bdi> סמ״ק</p><p class="sub">קובייה עם צלע של 2 ס״מ (בקובייה כל הצלעות שוות):</p><p>נפח = <bdi dir="ltr" class="ltr">2 × 2 × 2 = 8</bdi> סמ״ק</p><p class="sub">קובייה גדולה עם צלע של 10 ס״מ:</p><p>נפח = <bdi dir="ltr" class="ltr">10 × 10 × 10 = 1,000</bdi> סמ״ק = <strong>1 ליטר</strong>!</p></div><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p>קודם כופלים שני מספרים, ואת התוצאה כופלים במספר השלישי. <bdi dir="ltr" class="ltr">10 × 5 = 50</bdi>, ואז <bdi dir="ltr" class="ltr">50 × 4 = 200</bdi>.</p></div></article><article class="topic" id="b5"><h2 style="--c:var(--b)">נושא 5: נפח של מוצק בלי צורה מוגדרת</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 60 עד 62.</span></p><p>לאבן, למפתח או לצעצוע יש צורה <strong>לא מסודרת</strong>. אי אפשר למדוד להם אורך, רוחב וגובה בסרגל. לכן משתמשים ב<strong>משורה עם מים</strong>. זו נקראת <strong>שיטת ההשקעה במים</strong>.</p><div class="box fact reveal"><div class="box-title"><span class="ic">?</span>למה זה קורה?</div><p>כשמכניסים חפץ למים, הוא <strong>תופס מקום</strong> בתוך המים, והמים <strong>נדחפים למעלה</strong>. המים עולים בדיוק בכמות שווה ל<strong>נפח של החפץ</strong>.</p><p>זה כמו כשנכנסים לאמבטיה - המים עולים!</p></div><h3>השלבים - לפי הסדר:</h3><ol><li><strong>מוזגים מים</strong> למשורה וקוראים כמה מים יש (<strong>לפני</strong>).</li><li><strong>מכניסים את החפץ</strong> למשורה, כך שיהיה <strong>כולו בתוך המים</strong>.</li><li><strong>קוראים</strong> לאיזה גובה עלו המים (<strong>אחרי</strong>).</li><li><strong>מחסירים</strong>: המים אחרי פחות המים לפני.</li></ol><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>נפח החפץ = המים אחרי - המים לפני</strong></p></div><figure class="widget reveal" data-w="disp"><figcaption>מודדים נפח של אבן במשורה</figcaption><div class="stage">
+    <svg viewBox="0 0 260 300" class="svg">
+      <g class="scale"></g>
+      <path class="water-fill" d=""/>
+      <rect x="90" y="30" width="80" height="240" rx="4" class="glass-line"/>
+      <ellipse class="stone" cx="130" cy="12" rx="24" ry="16"/>
+      <line class="lvl-line" x1="86" x2="174" y1="0" y2="0"/>
+    </svg>
+    <div class="say big-say" aria-live="polite">לפני: <b>40</b> מ״ל</div></div><div class="controls"><button type="button" class="btn " data-act="drop">הכניסי את האבן</button><button type="button" class="btn ghost" data-act="reset">מההתחלה</button></div></figure><p class="caption">לפני: 40 מ״ל. אחרי שהכנסנו את האבן: 55 מ״ל.</p><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p>נפח האבן = <bdi dir="ltr" class="ltr">55 - 40 = 15</bdi> מ״ל = <strong>15 סמ״ק</strong></p></div><div class="box answer reveal"><div class="box-title"><span class="ic">✓</span>תשובה מוכנה למבחן</div><p class="sub">למה אי אפשר למדוד את הנפח של האבן בסרגל?</p><p><strong>כי לאבן אין צורה הנדסית מוגדרת, ואי אפשר למדוד לה אורך, רוחב וגובה.</strong></p></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><ul><li>שוכחים להחסיר! 55 זה <strong>לא</strong> נפח האבן. 55 זה המים <strong>ועוד</strong> האבן.</li><li>החפץ חייב להיות <strong>כולו מתחת למים</strong>.</li><li>צריך לשים מספיק מים כדי לכסות את החפץ, אבל לא יותר מדי - שלא יגלשו מהמשורה.</li></ul></div><h3>ומה עושים עם חפץ גדול שלא נכנס למשורה?</h3><p>ממלאים קערה במים <strong>עד הסוף</strong>, ומעמידים אותה בתוך קערה גדולה ריקה. מכניסים את החפץ - והמים <strong>גולשים</strong> החוצה. אוספים את המים שגלשו ומודדים אותם במשורה. <strong>נפח המים שגלשו = נפח החפץ.</strong></p><h3>ומה עם חפץ שצף (כמו פקק)?</h3><p>דוחפים אותו מתחת למים בעזרת <strong>סיכה דקה</strong>, כך שיהיה כולו בתוך המים, ורק אז קוראים.</p></article><article class="topic" id="b6"><h2 style="--c:var(--b)">נושא 6: נפח של נוזלים</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 59 ו-63.</span></p><p>לנוזל (מים, מיץ, חלב) <strong>אין צורה משלו</strong> - הוא מקבל את הצורה של הכלי שהוא נמצא בו. לכן מודדים את הנפח שלו בכלי מדידה: <strong>משורה</strong>, <strong>מזרק</strong> או <strong>כוס מדידה</strong>.</p><ol><li>מוזגים את הנוזל לתוך המשורה.</li><li>מחכים שהנוזל יירגע.</li><li>קוראים <strong>בגובה העיניים</strong>, בנקודה הנמוכה של פני הנוזל.</li><li>כותבים את התשובה עם <strong>יחידת מידה</strong> (מ״ל).</li></ol></article><article class="topic" id="b7"><h2 style="--c:var(--b)">נושא 7: נפח של גזים</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 88 עד 90.</span></p><p>גז (כמו אוויר) הוא חומר מיוחד: <strong>הוא מתפשט וממלא את כל הכלי שהוא נמצא בו</strong> - כל פינה, עד למעלה.</p><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>נפח הגז = הנפח של הכלי שהוא נמצא בו.</strong></p></div><figure class="widget reveal" data-w="gasbox"><figcaption>גז ממלא את כל הכלי</figcaption><div class="stage">
+    <canvas class="gas" width="600" height="260"></canvas>
+    <div class="say big-say" aria-live="polite"></div></div><div class="controls"><button type="button" class="btn " data-act="small">כלי קטן</button><button type="button" class="btn " data-act="big">כלי גדול</button></div></figure><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><ul><li>אוויר בבקבוק של 1 ליטר ← נפח האוויר = <strong>1 ליטר</strong>.</li><li>אוויר בבלון ← נפח האוויר = <strong>נפח הבלון</strong>.</li><li>אוויר במזרק סגור שמסומן 40 ← נפח האוויר = <strong>40 מ״ל</strong>.</li></ul></div><p>לכן, כדי למדוד נפח של גז, אפשר להכניס אותו ל<strong>מזרק</strong> ולקרוא את השנתה שליד הבוכנה.</p></article><article class="topic" id="b8"><h2 style="--c:var(--b)">נושא 8: מה קורה לנפח של מוצק כשמשנים לו צורה?</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמ׳ 61 (חלק ג).</span></p><p>בכיתה מדדתם גוש <strong>פלסטלינה</strong> בשיטת ההשקעה במים. אחר כך שיניתם לו צורה (שיטחתם, גלגלתם לנחש) ומדדתם שוב.</p><figure class="widget reveal" data-w="plasticine"><figcaption>משנים צורה לפלסטלינה - והנפח?</figcaption><div class="stage">
+    <svg viewBox="0 0 300 180" class="svg">
+      <ellipse class="clay" cx="150" cy="95" rx="50" ry="50"/>
+      <text class="clay-lbl" x="150" y="102" text-anchor="middle">30 סמ״ק</text>
+    </svg>
+    <div class="say" aria-live="polite">כדור פלסטלינה: <b>30 סמ״ק</b></div></div><div class="controls"><button type="button" class="btn " data-act="pita">שטחי לפיתה</button><button type="button" class="btn " data-act="snake">גלגלי לנחש</button><button type="button" class="btn " data-act="ball">חזרה לכדור</button></div></figure><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>כשמשנים צורה של מוצק - הנפח נשאר אותו דבר.</strong></p><p>רק הצורה משתנה. כמות הפלסטלינה לא השתנתה - לא הוספנו ולא הורדנו.</p></div><div class="box answer reveal"><div class="box-title"><span class="ic">✓</span>תשובה מוכנה למבחן</div><p class="sub">לכדור פלסטלינה יש נפח של 30 סמ״ק. נוי שיטחה אותו לצורת פיתה. מה הנפח של הפיתה?</p><p><strong>בדיוק 30 סמ״ק.</strong> רק הצורה השתנתה - כמות הפלסטלינה נשארה אותה כמות, ולכן גם הנפח.</p></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>פיתה נראית "גדולה יותר" כי היא רחבה - אבל היא גם <strong>דקה</strong>. הנפח <strong>לא</strong> גדל ו<strong>לא</strong> קטן.</p></div></article><article class="topic" id="b9"><h2 style="--c:var(--b)">נושא 9: מה קורה לנפח של נוזל כשמעבירים אותו לכלי אחר?</h2><p>מוזגים מיץ מבקבוק לכוס צרה וגבוהה, או לקערה רחבה ונמוכה. מה משתנה?</p><figure class="widget reveal" data-w="pour"><figcaption>מוזגים 300 מ״ל מיץ מבקבוק לכוס צרה</figcaption><div class="stage">
+    <svg viewBox="0 0 320 240" class="svg">
+      <g class="bottle-g"><path d="M40 60 L40 210 L130 210 L130 60 Z" class="glass-line"/>
+        <rect class="b-liq" x="42" y="110" width="86" height="98" fill="#f4a261"/></g>
+      <rect class="stream" x="183" y="40" width="6" height="0" fill="#f4a261"/>
+      <path d="M200 50 L200 210 L240 210 L240 50" class="glass-line"/>
+      <rect class="c-liq" x="202" y="208" width="36" height="0" fill="#f4a261"/>
+      <text class="b-lbl" x="85" y="230" text-anchor="middle">300 מ״ל</text>
+      <text class="c-lbl" x="220" y="230" text-anchor="middle">0 מ״ל</text>
+    </svg>
+    <div class="say" aria-live="polite"></div></div><div class="controls"><button type="button" class="btn " data-act="pour">מזגי</button><button type="button" class="btn ghost" data-act="reset">מההתחלה</button></div></figure><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>נוזל שמעבירים לכלי אחר: הצורה משתנה - הנפח נשאר אותו דבר.</strong></p><p>(בתנאי שלא נשפך כלום בדרך.)</p></div><div class="tbl-wrap reveal stack"><table style="--c:var(--b)"><thead><tr><th>מעבירים...</th><th>הצורה</th><th>הנפח</th></tr></thead><tbody><tr><td data-h="מעבירים..."><span>מכלי <strong>קטן</strong> לכלי <strong>גדול</strong></span></td><td data-h="הצורה"><span>משתנה</span></td><td data-h="הנפח"><span><strong>נשאר אותו דבר</strong>. הנוזל לא ממלא את כל הכלי הגדול.</span></td></tr><tr><td data-h="מעבירים..."><span>מכלי <strong>גדול</strong> לכלי <strong>קטן</strong></span></td><td data-h="הצורה"><span>משתנה</span></td><td data-h="הנפח"><span><strong>נשאר אותו דבר</strong>. אבל אם הכלי הקטן קטן מדי - חלק מהנוזל <strong>יישפך</strong> החוצה.</span></td></tr></tbody></table></div><div class="box answer reveal"><div class="box-title"><span class="ic">✓</span>תשובה מוכנה למבחן</div><p class="sub">מזגו 300 מ״ל מיץ מבקבוק לכוס צרה וגבוהה. כמה מיץ יש בכוס? מה השתנה?</p><p>בכוס יש <strong>300 מ״ל</strong>. השתנתה <strong>הצורה</strong> - לא הנפח.</p></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>בכוס צרה וגבוהה המיץ מגיע <strong>גבוה יותר</strong>, ולכן נראה כאילו יש "יותר". זו <strong>אשליה</strong>! הכמות זהה.</p></div></article><article class="topic" id="b10"><h2 style="--c:var(--b)">נושא 10: מה קורה לנפח של גז כשמעבירים אותו לכלי אחר?</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 88 עד 90.</span></p><p>כאן גז <strong>שונה</strong> ממוצק ומנוזל! גז תמיד ממלא את <strong>כל</strong> הכלי.</p><div class="tbl-wrap reveal stack"><table style="--c:var(--b)"><thead><tr><th>מעבירים גז...</th><th>מה קורה לנפח?</th><th>למה?</th></tr></thead><tbody><tr><td data-h="מעבירים גז..."><span>מכלי <strong>קטן</strong> לכלי <strong>גדול</strong></span></td><td data-h="מה קורה לנפח?"><span><strong>גדל</strong></span></td><td data-h="למה?"><span>הגז <strong>מתפשט</strong> וממלא את כל הכלי הגדול.</span></td></tr><tr><td data-h="מעבירים גז..."><span>מכלי <strong>גדול</strong> לכלי <strong>קטן</strong></span></td><td data-h="מה קורה לנפח?"><span><strong>קטן</strong></span></td><td data-h="למה?"><span>הגז <strong>נדחס</strong> (נלחץ) למקום קטן יותר.</span></td></tr></tbody></table></div><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>לגז אין נפח קבוע. נפח הגז משתנה לפי הנפח של הכלי.</strong></p><p>אבל <strong>כמות</strong> הגז (המסה שלו) <strong>לא משתנה</strong> - זה אותו גז, רק תופס יותר או פחות מקום.</p></div><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p class="sub">ניסוי המזרק מהכיתה:</p><p>במזרק יש <strong>40 מ״ל</strong> אוויר. סוגרים את הפתח באצבע ודוחפים את הבוכנה עד השנתה <strong>20</strong>.</p><ul><li>הנפח של האוויר עכשיו: <strong>20 מ״ל</strong>.</li><li>האם כמות האוויר השתנתה? <strong>לא</strong> - הפתח סגור, האוויר לא יכול לצאת. אותו אוויר <strong>נדחס</strong> למקום קטן יותר.</li><li>כשעוזבים את הבוכנה, היא <strong>קופצת חזרה</strong> - האוויר מתפשט שוב.</li></ul></div><figure class="widget reveal" data-w="syringe"><figcaption>מזרק סגור: דוחפים את הבוכנה מ-40 ל-20</figcaption><div class="stage">
+    <canvas class="syr" width="640" height="200"></canvas>
+    <div class="say big-say" aria-live="polite"></div></div><div class="controls"><button type="button" class="btn " data-act="push">דחפי עד 20</button><button type="button" class="btn " data-act="pull">שחררי ל-40</button></div></figure><div class="box example reveal"><div class="box-title"><span class="ic">›</span>דוגמה</div><p class="sub">ניסוי הכדור:</p><p>מנפחים כדור שכבר מלא באוויר. <strong>נפח הכדור</strong> לא משתנה, ולכן גם <strong>נפח האוויר</strong> לא משתנה (הוא שווה לנפח הכדור). מה כן משתנה? <strong>כמות האוויר</strong> - הכנסנו עוד אוויר, והוא נדחס.</p></div><h3>טבלת השוואה - הכי חשוב לזכור!</h3><div class="tbl-wrap reveal stack"><table style="--c:var(--b)"><thead><tr><th></th><th>מוצק (אבן, פלסטלינה)</th><th>נוזל (מים, מיץ)</th><th>גז (אוויר)</th></tr></thead><tbody><tr><td data-h=""><span><strong>צורה</strong></span></td><td data-h="מוצק (אבן, פלסטלינה)"><span>קבועה (אלא אם משנים אותה בידיים)</span></td><td data-h="נוזל (מים, מיץ)"><span>משתנה - לפי הכלי</span></td><td data-h="גז (אוויר)"><span>משתנה - לפי הכלי</span></td></tr><tr><td data-h=""><span><strong>נפח</strong></span></td><td data-h="מוצק (אבן, פלסטלינה)"><span><strong>קבוע</strong></span></td><td data-h="נוזל (מים, מיץ)"><span><strong>קבוע</strong></span></td><td data-h="גז (אוויר)"><span><strong>משתנה</strong> - ממלא את כל הכלי</span></td></tr><tr><td data-h=""><span>מעבירים <strong>לכלי גדול</strong></span></td><td data-h="מוצק (אבן, פלסטלינה)"><span>נשאר אותו דבר</span></td><td data-h="נוזל (מים, מיץ)"><span>נשאר אותו דבר</span></td><td data-h="גז (אוויר)"><span><strong>גדל</strong></span></td></tr><tr><td data-h=""><span>מעבירים <strong>לכלי קטן</strong></span></td><td data-h="מוצק (אבן, פלסטלינה)"><span>נשאר אותו דבר</span></td><td data-h="נוזל (מים, מיץ)"><span>נשאר אותו דבר (ואם אין מקום - נשפך)</span></td><td data-h="גז (אוויר)"><span><strong>קטן</strong> (נדחס)</span></td></tr></tbody></table></div></article><article class="topic" id="b11"><h2 style="--c:var(--b)">נושא 11: כיול כלים - הכנת כלי מכויל</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמ׳ 63 (השאלה על הבקבוק).</span></p><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>כיול = סימון שנתות (קווים עם מספרים) על כלי, כדי שאפשר יהיה למדוד בו נפח.</strong></p><p><strong>כלי מכויל</strong> = כלי שיש עליו שנתות.</p></div><p>בכיתה הכנתם בעצמכם כלי מכויל. כך עושים את זה:</p><figure class="widget reveal" data-w="calib"><figcaption>מכיילים כלי: מוסיפים 20 מ״ל בכל פעם</figcaption><div class="stage">
+    <svg viewBox="0 0 320 280" class="svg">
+      <g class="jar"></g><g class="bottle"></g>
+      <text x="85" y="272" text-anchor="middle" class="t-tick">צנצנת ישרה</text>
+      <text x="235" y="272" text-anchor="middle" class="t-tick">בקבוק לא ישר</text>
+    </svg>
+    <div class="say" aria-live="polite">לחצי כדי להוסיף 20 מ״ל לכל כלי ולסמן קו.</div></div><div class="controls"><button type="button" class="btn " data-act="add">הוסיפי 20 מ״ל</button><button type="button" class="btn ghost" data-act="reset">מההתחלה</button></div></figure><div class="box example reveal"><div class="box-title"><span class="ic">›</span>איך מכיילים צנצנת?</div><p class="sub">צריך: צנצנת ריקה, מזרק של 20 מ״ל, מים וטוש.</p><ol><li>מכניסים לצנצנת <strong>20 מ״ל</strong> מים בעזרת המזרק.</li><li>מסמנים בטוש <strong>קו</strong> בגובה המים, וכותבים לידו <strong>"20"</strong>.</li><li>מוסיפים עוד 20 מ״ל, מסמנים קו וכותבים <strong>"40"</strong>.</li><li>ממשיכים כך (60, 80...) עד <strong>100</strong> מ״ל.</li></ol></div><div class="box trick reveal"><div class="box-title"><span class="ic">+</span>טריק לזכירה</div><p>בכל פעם מוסיפים <strong>אותה כמות</strong> מים (20 מ״ל). המספר שכותבים = <strong>כל המים שיש בצנצנת עד עכשיו</strong>.</p></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>אסור לצייר את הקווים "בעין" במרחקים שווים! אם הכלי <strong>לא ישר</strong> (למשל בקבוק שצר למעלה ורחב למטה), המרחקים בין הקווים <strong>לא יהיו שווים</strong>. לכן חייבים <strong>למזוג ולסמן</strong> כל פעם מחדש.</p></div><div class="box answer reveal"><div class="box-title"><span class="ic">✓</span>תשובה מוכנה למבחן</div><p class="sub">תני דוגמה לכלי מכויל שיש בבית:</p><p><strong>כוס מדידה במטבח, בקבוק תינוק, כוסית לתרופה, מזרק לתרופה, כף מדידה.</strong></p></div></article><article class="topic" id="b12"><h2 style="--c:var(--b)">נושא 12: גז תופס מקום</h2><p class="bookref"><span class="bk" aria-hidden="true"></span><span><strong>רוצה לראות את האיור בספר?</strong> באופק, בספר "מדעי החומר לכיתה ז", עמודים 80 עד 81.</span></p><p>את האוויר <strong>לא רואים</strong>, אבל הוא <strong>חומר</strong>. ולכל חומר יש <strong>נפח</strong> - הוא <strong>תופס מקום</strong>. הנה הניסויים שמוכיחים את זה:</p><div class="box example reveal"><div class="box-title"><span class="ic">›</span>ניסוי 1: הנייר שנשאר יבש</div><p>שמים מגבת נייר <strong>יבשה</strong> בתחתית כוס. <strong>הופכים</strong> את הכוס ומכניסים אותה <strong>ישר למטה</strong> לתוך קערה עם מים. מוציאים - <strong>והנייר יבש!</strong></p><p><strong>למה?</strong> בתוך הכוס היה <strong>אוויר</strong>. האוויר <strong>תופס מקום</strong> ולא נתן למים להיכנס עד הנייר.</p></div><figure class="widget reveal" data-w="paper"><figcaption>הנייר שנשאר יבש</figcaption><div class="stage">
+    <svg viewBox="0 0 300 240" class="svg">
+      <rect x="40" y="110" width="220" height="110" rx="10" fill="#cfe8f7" stroke="#5b9bd5" stroke-width="3"/>
+      <g class="cup"><path d="M115 20 L185 20 L177 110 L123 110 Z" class="cup-body"/>
+        <rect x="122" y="22" width="56" height="14" fill="#fff6d5" stroke="#c9a227"/>
+        <rect class="cup-water" x="124" y="110" width="52" height="0" fill="#9ecae1"/>
+        <text x="150" y="70" text-anchor="middle" class="air">אוויר</text></g>
+    </svg>
+    <div class="say" aria-live="polite"></div></div><div class="controls"><button type="button" class="btn " data-act="dip">הכניסי את הכוס</button><button type="button" class="btn ghost" data-act="reset">מההתחלה</button></div></figure><div class="box example reveal"><div class="box-title"><span class="ic">›</span>ניסוי 2: הבלון בתוך הבקבוק</div><p>מכניסים בלון לתוך בקבוק ריק, ומותחים את פי הבלון על פי הבקבוק. מנסים לנפח - <strong>והבלון כמעט לא מתנפח!</strong></p><p><strong>למה?</strong> כי הבקבוק "הריק" בעצם <strong>מלא באוויר</strong>. האוויר <strong>תופס מקום</strong>, ואין לבלון לאן לגדול.</p></div><figure class="widget reveal" data-w="balloon"><figcaption>בלון בתוך בקבוק</figcaption><div class="stage">
+    <svg viewBox="0 0 300 260" class="svg">
+      <path d="M120 20 L180 20 L180 60 Q230 80 230 120 L230 240 L70 240 L70 120 Q70 80 120 60 Z" class="glass-line"/>
+      <text x="150" y="215" text-anchor="middle" class="air">אוויר תופס מקום</text>
+      <ellipse class="bln" cx="150" cy="70" rx="14" ry="20" fill="#e63946" opacity=".85"/>
+      <circle class="hole" cx="230" cy="200" r="0" fill="#222"/>
+    </svg>
+    <div class="say" aria-live="polite"></div></div><div class="controls"><button type="button" class="btn " data-act="blow">נפחי</button><button type="button" class="btn " data-act="hole">נקבי חור בבקבוק ונפחי</button><button type="button" class="btn ghost" data-act="reset">מההתחלה</button></div></figure><div class="box example reveal"><div class="box-title"><span class="ic">›</span>ניסוי 3: המזרק בתוך המים</div><p>ממלאים מזרק באוויר ומכניסים אותו למים. לוחצים על הבוכנה - <strong>ויוצאות בועות</strong>.</p><p><strong>למה?</strong> האוויר היה בתוך המזרק ותפס מקום. כשלחצנו, דחפנו אותו החוצה - ואת הבועות אנחנו רואים.</p></div><div class="box remember reveal"><div class="box-title"><span class="ic">!</span>חשוב לזכור</div><p><strong>לאוויר יש נפח - הוא תופס מקום, גם אם לא רואים אותו.</strong></p><p>כלי "ריק" הוא לא באמת ריק - הוא <strong>מלא באוויר</strong>.</p></div><div class="box mistake reveal"><div class="box-title"><span class="ic">✕</span>טעות נפוצה - לא ליפול בה!</div><p>"לאוויר אין נפח כי לא רואים אותו" - <strong>לא נכון!</strong></p></div></article></section><section class="part" id="memorize" style="--c:var(--m)"><h1 class="part-title" style="--c:var(--m)">משפטים לזכור בעל פה - לפני המבחן</h1><p>קראי את הדף הזה ביום שלפני המבחן ובבוקר של המבחן. אם את יודעת את כל המשפטים האלה - את מוכנה!</p><article class="topic" id="m1"><h2 style="--c:var(--a)">החקר המדעי</h2><ul><li><strong>גורם משפיע</strong> = מה שאני <strong>משנה</strong> בניסוי.</li><li><strong>גורם מושפע</strong> = מה שאני <strong>מודדת</strong> בניסוי.</li><li><strong>גורמים קבועים</strong> = מה ש<strong>נשאר זהה</strong>. משנים <strong>רק דבר אחד</strong>.</li><li><strong>שאלת חקר</strong>: כיצד משפיע ___ על ___?</li><li><strong>השערה</strong>: ככל ש___ כך ___, <strong>כי</strong> ___.</li><li><strong>מהלך ניסוי</strong>: חומרים וכלים, שלבים ממוספרים, כמויות, מה משנים, מה מודדים, חזרות.</li><li><strong>גרף</strong>: למטה (אופקי) = משפיע. בצד (אנכי) = מושפע. כותרת + שמות צירים + יחידות.</li><li><strong>גרף עמודות</strong> = לסוגים. <strong>גרף קווי</strong> = למספרים.</li><li><strong>קריאת גרף</strong>: מוצאים על ציר אחד ← הולכים עד הקו ← פונים לציר השני.</li><li><strong>מסקנה</strong>: ככל ש___ כך ___. ההשערה נכונה / לא נכונה.</li><li><strong>חזרות</strong> = כדי שהתוצאות יהיו <strong>אמינות</strong>. ממוצע = מחברים ומחלקים במספר התוצאות.</li></ul></article><article class="topic" id="m2"><h2 style="--c:var(--b)">נפח</h2><ul><li><strong>נפח הוא המקום שהגוף תופס במרחב.</strong></li><li><bdi dir="ltr" class="ltr">1</bdi> סמ״ק = <bdi dir="ltr" class="ltr">1</bdi> מ״ל. <bdi dir="ltr" class="ltr">1</bdi> ליטר = <bdi dir="ltr" class="ltr">1,000</bdi> מ״ל. <bdi dir="ltr" class="ltr">1</bdi> מ״ק = <bdi dir="ltr" class="ltr">1,000</bdi> ליטר.</li><li>ליטר ← מ״ל: <strong>כפול 1,000</strong>. מ״ל ← ליטר: <strong>חלקי 1,000</strong>.</li><li><strong>קובייה / תיבה</strong>: נפח = אורך × רוחב × גובה (בסרגל).</li><li><strong>אבן / מפתח</strong>: נפח = המים אחרי - המים לפני (במשורה).</li><li><strong>משורה</strong> = הכלי העיקרי לנוזלים. קוראים <strong>בגובה העיניים</strong>.</li><li><strong>מוצק שמשנים לו צורה</strong> = הנפח <strong>לא משתנה</strong>.</li><li><strong>נוזל שמעבירים לכלי אחר</strong> = הצורה משתנה, הנפח <strong>לא משתנה</strong>.</li><li><strong>גז</strong> = ממלא את <strong>כל</strong> הכלי. לכלי גדול - הנפח <strong>גדל</strong>. לכלי קטן - הנפח <strong>קטן</strong>. הכמות לא משתנה.</li><li><strong>כיול</strong> = סימון שנתות על כלי כדי שאפשר יהיה למדוד בו.</li><li><strong>גז תופס מקום</strong> - גם אם לא רואים אותו. כוס "ריקה" מלאה באוויר.</li></ul></article></section><section class="part" id="coverage" style="--c:var(--muted)"><h1 class="part-title" style="--c:var(--muted)">בדיקה: כל נושאי דף ההכנה נמצאים במחברת</h1><div class="tbl-wrap reveal stack"><table style="--c:var(--muted)"><thead><tr><th>הנושא בדף ההכנה</th><th>איפה במחברת</th></tr></thead><tbody><tr><td data-h="הנושא בדף ההכנה"><span>זיהוי גורם משפיע וגורם מושפע</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 1</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>זיהוי גורמים קבועים בניסוי</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 2</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>ניסוח שאלת חקר</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 3</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>ניסוח השערת החקר</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 4</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>כתיבת מהלך ניסוי</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 5</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>הצגת תוצאות ניסוי (טבלה, גרף)</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 6</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>הבנת תוצאות בטבלה או בגרף (קריאת גרפים)</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 7</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>הסקת מסקנות מתוצאות ניסוי</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 8</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>חזרות בניסוי</span></td><td data-h="איפה במחברת"><span>חלק א, נושא 9</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>ניסוי "צימוקים רוקדים"</span></td><td data-h="איפה במחברת"><span>לאורך כל חלק א + סיכום בסוף החלק</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>הגדרת נפח</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 1</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>יחידות מידה של נפח והמרת יחידות</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 2</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>כלים למדידת נפח, עבודה עם משורות</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 3</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>נפח מוצקים בעלי צורה הנדסית מוגדרת</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 4</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>נפח מוצקים בלי צורה מוגדרת (משורה)</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 5</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>מדידת נפח של נוזלים</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 6</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>מדידת נפח של גזים</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 7</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>מה קורה לנפח מוצק שצורתו משתנה</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 8</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>נפח נוזל במעבר מכלי גדול לקטן ולהיפך</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 9</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>נפח גז במעבר מכלי גדול לקטן ולהיפך</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 10</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>כיול כלים, הכנת כלי מכויל</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 11</span></td></tr><tr><td data-h="הנושא בדף ההכנה"><span>גז תופס מקום, הדגמות לנפח גז</span></td><td data-h="איפה במחברת"><span>חלק ב, נושא 12</span></td></tr></tbody></table></div><p class="center big">בהצלחה במבחן, עופרי!</p></section>
+<footer class="end">נכתב לעופרי באהבה. בהצלחה במבחן!</footer>
+</main>
+</div>
+<script>(function () {
+  const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NS = 'http://www.w3.org/2000/svg';
+  const $ = (r, s) => r.querySelector(s), $$ = (r, s) => Array.from(r.querySelectorAll(s));
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  function tween(ms, fn, done) {
+    if (RM) { fn(1); done && done(); return; }
+    const t0 = performance.now();
+    (function f(now) { const t = Math.min(1, (now - t0) / ms); fn(ease(t), t); if (t < 1) requestAnimationFrame(f); else done && done(); })(t0);
+  }
+  const wait = ms => new Promise(r => setTimeout(r, RM ? 0 : ms));
+  const tw = (ms, fn) => new Promise(r => tween(ms, fn, r));
+  const L = s => `<bdi dir="ltr">${s}</bdi>`;
+  const say = (w, html) => { const s = $(w, '.say'); if (s) s.innerHTML = html; };
+
+  // ---------- progress bar
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement; bar.style.width = (100 * h.scrollTop / (h.scrollHeight - h.clientHeight)) + '%';
+  }, { passive: true });
+
+  // ---------- widgets
+  const W = {};
+
+  W.steps = { play(w) { const f = $(w, '.flow'); f.classList.remove('go'); void f.offsetWidth; f.classList.add('go'); }, auto(w) { this.play(w); } };
+
+  W.influence = {
+    init(w) { this.v = 'water'; },
+    toggle(w) {
+      this.v = this.v === 'water' ? 'soda' : 'water';
+      $$(w, '[data-v]').forEach(s => s.classList.toggle('on', s.dataset.v === this.v));
+      const n = $(w, '.meter-num'), from = +n.textContent, to = this.v === 'soda' ? 10 : 0;
+      tween(900, t => n.textContent = Math.round(from + (to - from) * t));
+    },
+  };
+
+  W.bar = {
+    play(w) {
+      $$(w, '.bar-lbl').forEach(l => l.style.opacity = 0);
+      $$(w, '.bar').forEach((b, i) => {
+        const v = +b.dataset.v; b.setAttribute('height', 0); b.setAttribute('y', 210);
+        setTimeout(() => tween(900, t => { b.setAttribute('height', v * 10 * t); b.setAttribute('y', 210 - v * 10 * t); },
+          () => { $$(w, '.bar-lbl')[i].style.opacity = 1; }), RM ? 0 : i * 350);
+      });
+    }, auto(w) { this.play(w); },
+  };
+
+  W.line = {
+    auto(w) { $(w, '.lineplot').classList.add('drawn'); },
+    reset(w) { $$(w, '.read').forEach(l => l.classList.remove('on')); $$(w, '.hit,.hit2').forEach(c => c.classList.remove('on')); },
+    async read40(w) {
+      this.reset(w);
+      say(w, `<b>שלב 1:</b> מוצאים ${L('40')} על הציר האופקי ועולים ישר למעלה עד הקו.`); $(w, '.r1').classList.add('on'); await wait(1300);
+      say(w, '<b>שלב 2:</b> פונים הצידה אל הציר האנכי.'); $(w, '.r2').classList.add('on'); await wait(1300);
+      $(w, '.hit').classList.add('on'); say(w, `<b>התשובה: ${L('50')} שניות!</b>`);
+    },
+    async read35(w) {
+      this.reset(w);
+      say(w, `${L('35')} לא נבדק - הוא <b>באמצע</b> בין ${L('30')} ל-${L('40')}. עולים עד הקו...`); $(w, '.r3').classList.add('on'); await wait(1300);
+      say(w, '...ופונים לציר האנכי.'); $(w, '.r4').classList.add('on'); await wait(1300);
+      $(w, '.hit2').classList.add('on'); say(w, `<b>בערך ${L('60')} שניות</b> - באמצע בין ${L('70')} ל-${L('50')}.`);
+    },
+  };
+
+  // ---------- isometric cube builder
+  function iso(w) {
+    const svg = $(w, 'svg.iso'), a = +svg.dataset.a, b = +svg.dataset.b, h = +svg.dataset.h;
+    const vb = svg.viewBox.baseVal, c = .866;
+    const raw = (x, y, z) => [(x - y) * c, (x + y) * .5 - z];
+    const pts = []; [0, a].forEach(x => [0, b].forEach(y => [0, h].forEach(z => pts.push(raw(x, y, z)))));
+    const minX = Math.min(...pts.map(p => p[0])), maxX = Math.max(...pts.map(p => p[0]));
+    const minY = Math.min(...pts.map(p => p[1])), maxY = Math.max(...pts.map(p => p[1]));
+    const s = Math.min((vb.width - 20) / (maxX - minX), (vb.height - 20) / (maxY - minY));
+    const P = (x, y, z) => { const r = raw(x, y, z); return [(r[0] - minX) * s + (vb.width - (maxX - minX) * s) / 2, (r[1] - minY) * s + 10]; };
+    const poly = (arr, fill, g) => el('polygon', { points: arr.map(p => P(...p).join(',')).join(' '), fill, stroke: '#1b4965', 'stroke-width': 1.2 }, g);
+    const line = (p, q, g) => { const A = P(...p), B = P(...q); el('line', { x1: A[0], y1: A[1], x2: B[0], y2: B[1], stroke: '#1b4965', 'stroke-width': .6, opacity: .7 }, g); };
+    return { svg, a, b, h, slab(z) {
+      const g = el('g', { class: 'slab' }, svg), z1 = z + 1;
+      poly([[a, 0, z], [a, b, z], [a, b, z1], [a, 0, z1]], '#5fa8d3', g);
+      poly([[0, b, z], [a, b, z], [a, b, z1], [0, b, z1]], '#3d85b8', g);
+      poly([[0, 0, z1], [a, 0, z1], [a, b, z1], [0, b, z1]], '#bee9e8', g);
+      for (let i = 1; i < a; i++) { line([i, 0, z1], [i, b, z1], g); line([i, b, z], [i, b, z1], g); }
+      for (let j = 1; j < b; j++) { line([0, j, z1], [a, j, z1], g); line([a, j, z], [a, j, z1], g); }
+      return g;
+    } };
+  }
+  const fmt = n => n.toLocaleString('en-US');
+  const cubeW = {
+    async play(w) {
+      if (this.busy) return; this.busy = true;
+      const I = iso(w); $$(I.svg, '.slab').forEach(g => g.remove());
+      for (let z = 0; z < I.h; z++) {
+        const g = I.slab(z); g.style.opacity = 0; g.style.transform = 'translateY(-14px)';
+        requestAnimationFrame(() => { g.style.opacity = 1; g.style.transform = 'none'; });
+        say(w, `שכבה ${L(z + 1)}: ${L(`${I.a} × ${I.b} × ${z + 1} = ${fmt(I.a * I.b * (z + 1))}`)} סמ״ק`);
+        await wait(I.h > 5 ? 420 : 650);
+      }
+      const v = I.a * I.b * I.h;
+      say(w, `<b>${L(`${I.a} × ${I.b} × ${I.h} = ${fmt(v)}`)} סמ״ק</b>` + (v === 1000 ? ` = <b>1 ליטר</b>! (כל קובייה קטנה = ${L('1')} סמ״ק)` : ' (אורך × רוחב × גובה)'));
+      this.busy = false;
+    }, auto(w) { this.play(w); },
+  };
+  W.cubes1000 = Object.create(cubeW); W.box200 = Object.create(cubeW);
+
+  // ---------- reading a cylinder
+  W.cylinder = {
+    init(w) {
+      const svg = $(w, 'svg'), g = $(w, '.scale'), Y = v => 270 - v * 4.6;
+      for (let v = 0; v <= 50; v += 2) {
+        const big = v % 10 === 0;
+        el('line', { x1: 80, x2: big ? 100 : 92, y1: Y(v), y2: Y(v), class: 'tk', 'stroke-width': big ? 1.6 : 1 }, g);
+        if (big) { const t = el('text', { x: 72, y: Y(v) + 4, 'text-anchor': 'end', class: 't-tick n' }, g); t.textContent = v; }
+      }
+      this.lv = Y(34);
+      $(w, '.water-fill').setAttribute('d', `M82 270 L82 ${this.lv - 6} Q110 ${this.lv + 6} 138 ${this.lv - 6} L138 270 Z`);
+      this.r = $(w, '.eye-range'); this.r.addEventListener('input', () => this.draw(w)); this.draw(w);
+    },
+    draw(w) {
+      const v = +this.r.value, ey = this.lv - v;
+      $(w, '.eye').setAttribute('transform', `translate(0 ${ey})`);
+      const s = $(w, '.sight'); s.setAttribute('y1', ey); s.setAttribute('y2', this.lv);
+      const ok = Math.abs(v) < 8;
+      s.classList.toggle('ok', ok);
+      say(w, ok ? `<b>מצוין!</b> העין בגובה המים. קוראים בנקודה הנמוכה של פני המים: <b>${L('34')} מ״ל</b>. (כל קו קטן = ${L('2')} מ״ל)`
+        : v > 0 ? 'את מסתכלת <b>מלמעלה</b> - הקריאה לא מדויקת. הזיזי את העין למטה.' : 'את מסתכלת <b>מלמטה</b> - הקריאה לא מדויקת. הזיזי את העין למעלה.');
+    },
+    level(w) { const from = +this.r.value; tween(700, t => { this.r.value = Math.round(from * (1 - t)); this.draw(w); }); },
+  };
+
+  // ---------- displacement
+  W.disp = {
+    Y: v => 270 - v * 2.4,
+    init(w) {
+      const g = $(w, '.scale');
+      for (let v = 0; v <= 100; v += 5) {
+        const big = v % 10 === 0;
+        el('line', { x1: 90, x2: big ? 112 : 102, y1: this.Y(v), y2: this.Y(v), class: 'tk', 'stroke-width': big ? 1.6 : 1 }, g);
+        if (big) { const t = el('text', { x: 82, y: this.Y(v) + 4, 'text-anchor': 'end', class: 't-tick n' }, g); t.textContent = v; }
+      }
+      this.reset(w);
+    },
+    setLevel(w, v) {
+      const y = this.Y(v);
+      $(w, '.water-fill').setAttribute('d', `M92 270 L92 ${y} L168 ${y} L168 270 Z`);
+      const l = $(w, '.lvl-line'); l.setAttribute('y1', y); l.setAttribute('y2', y);
+    },
+    reset(w) { this.busy = false; $(w, '.stone').setAttribute('cy', 12); this.setLevel(w, 40); say(w, `לפני: <b>${L('40')}</b> מ״ל מים`); },
+    drop(w) {
+      if (this.busy) return; this.busy = true;
+      const st = $(w, '.stone'), top = this.Y(40);
+      tween(1500, t => {
+        const cy = 12 + (252 - 12) * t; st.setAttribute('cy', cy);
+        const sub = Math.max(0, Math.min(1, (cy + 16 - top) / 32));
+        this.setLevel(w, 40 + 15 * sub);
+      }, () => say(w, `אחרי: <b>${L('55')}</b> מ״ל<br>נפח האבן = ${L('55 - 40 = 15')} מ״ל`));
+    },
+  };
+
+  const cv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  // ---------- gas in a container (canvas)
+  function canvasSetup(c) {
+    const r = devicePixelRatio || 1, W0 = c.width, H0 = c.height;
+    if (!c.dataset.w) { c.dataset.w = W0; c.dataset.h = H0; c.width = W0 * r; c.height = H0 * r; c.getContext('2d').scale(r, r); }
+    return [c.getContext('2d'), +c.dataset.w, +c.dataset.h];
+  }
+  function particles(n, x0, x1, y0, y1) {
+    return Array.from({ length: n }, () => ({ x: x0 + Math.random() * (x1 - x0), y: y0 + Math.random() * (y1 - y0),
+      vx: (Math.random() - .5) * 6, vy: (Math.random() - .5) * 6 }));
+  }
+  function step(ps, x0, x1, y0, y1, r) {
+    ps.forEach(p => {
+      if (!RM) { p.x += p.vx; p.y += p.vy; }
+      if (p.x < x0 + r) { p.x = x0 + r; p.vx = Math.abs(p.vx); } if (p.x > x1 - r) { p.x = x1 - r; p.vx = -Math.abs(p.vx); }
+      if (p.y < y0 + r) { p.y = y0 + r; p.vy = Math.abs(p.vy); } if (p.y > y1 - r) { p.y = y1 - r; p.vy = -Math.abs(p.vy); }
+    });
+  }
+  W.gasbox = {
+    init(w) {
+      const [ctx, cw, ch] = canvasSetup($(w, 'canvas'));
+      this.right = 580; this.left = 20; this.wid = 200; this.target = 200; this.ps = particles(30, cw - 220, cw - 20, 30, 230);
+      const loop = () => {
+        this.wid += (this.target - this.wid) * .06;
+        const x1 = cw - 20, x0 = x1 - this.wid;
+        step(this.ps, x0, x1, 30, 230, 7);
+        ctx.clearRect(0, 0, cw, ch);
+        ctx.fillStyle = cv('--card'); ctx.fillRect(x0, 30, this.wid, 200);
+        ctx.strokeStyle = cv('--ink'); ctx.lineWidth = 4; ctx.strokeRect(x0, 30, this.wid, 200);
+        this.ps.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, 7); ctx.fillStyle = cv('--gas'); ctx.fill(); });
+        if (w.isConnected) requestAnimationFrame(loop);
+      };
+      loop(); this.small(w);
+    },
+    small(w) { this.target = 200; say(w, `כלי <b>קטן</b> ← נפח הגז = נפח הכלי (קטן)<br>כמות הגז: אותם ${L('30')} חלקיקים`); },
+    big(w) { this.target = 560; say(w, `כלי <b>גדול</b> ← הגז <b>התפשט</b> וממלא את כל הכלי. הנפח <b>גדל</b>!<br>כמות הגז: אותם ${L('30')} חלקיקים`); },
+  };
+
+  // ---------- syringe (canvas)
+  W.syringe = {
+    X: v => 80 + v * 10,
+    init(w) {
+      const [ctx, cw, ch] = canvasSetup($(w, 'canvas'));
+      this.v = 40; this.ps = particles(24, 82, this.X(40), 62, 138);
+      const loop = () => {
+        const px = this.X(this.v);
+        step(this.ps, 80, px, 60, 140, 6);
+        ctx.clearRect(0, 0, cw, ch);
+        ctx.fillStyle = cv('--card'); ctx.fillRect(80, 60, 520, 80);
+        ctx.fillStyle = cv('--tip'); ctx.fillRect(80, 60, px - 80, 80);
+        ctx.strokeStyle = cv('--ink'); ctx.lineWidth = 3; ctx.strokeRect(80, 60, 520, 80);
+        ctx.fillStyle = cv('--bad-b'); ctx.fillRect(40, 88, 40, 24); // closed tip
+        ctx.fillStyle = cv('--ink'); ctx.font = '22px sans-serif'; ctx.textAlign = 'center';
+        for (let v = 0; v <= 50; v += 5) { const x = this.X(v); ctx.beginPath(); ctx.moveTo(x, 140); ctx.lineTo(x, v % 10 ? 130 : 122); ctx.lineWidth = 1.5; ctx.stroke(); if (v % 10 === 0) ctx.fillText(v, x, 170); }
+        this.ps.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, 6, 0, 7); ctx.fillStyle = cv('--air'); ctx.fill(); });
+        ctx.fillStyle = cv('--muted'); ctx.fillRect(px, 62, 14, 76); ctx.fillRect(px + 14, 94, 150, 12); ctx.fillRect(px + 160, 70, 14, 60);
+        if (w.isConnected) requestAnimationFrame(loop);
+      };
+      loop(); say(w, `במזרק <b>${L('40')}</b> מ״ל אוויר. הפתח <b>סגור</b> (הפקק האדום) - האוויר לא יכול לצאת.`);
+    },
+    move(w, to, msg) { const from = this.v; tween(1200, t => { this.v = from + (to - from) * t; }, () => say(w, msg)); },
+    push(w) { this.move(w, 20, `נפח האוויר עכשיו: <b>${L('20')} מ״ל</b>.<br>כמות האוויר <b>לא השתנתה</b> - אותו אוויר <b>נדחס</b> למקום קטן יותר.`); },
+    pull(w) { this.move(w, 40, `הבוכנה חזרה ל-${L('40')}: האוויר <b>התפשט</b> שוב וממלא את כל המקום.`); },
+  };
+
+  // ---------- plasticine
+  W.plasticine = {
+    shape(w, rx, ry, name) {
+      const c = $(w, '.clay'), r0 = +c.getAttribute('rx'), q0 = +c.getAttribute('ry');
+      tween(900, t => { c.setAttribute('rx', r0 + (rx - r0) * t); c.setAttribute('ry', q0 + (ry - q0) * t); });
+      say(w, `${name}: <b>${L('30')} סמ״ק</b> - הצורה השתנתה, <b>הנפח לא!</b>`);
+    },
+    pita(w) { this.shape(w, 112, 22.3, 'פיתה'); }, snake(w) { this.shape(w, 140, 17.9, 'נחש'); },
+    ball(w) { this.shape(w, 50, 50, 'כדור'); },
+  };
+
+  // ---------- pouring
+  W.pour = {
+    init(w) { this.reset(w); },
+    set(w, t) {
+      const b = $(w, '.b-liq'), c = $(w, '.c-liq'), hb = 60 * (1 - t), hc = 143 * t;
+      b.setAttribute('y', 208 - hb); b.setAttribute('height', hb);
+      c.setAttribute('y', 208 - hc); c.setAttribute('height', hc);
+      $(w, '.b-lbl').textContent = Math.round(300 * (1 - t)) + ' מ״ל';
+      $(w, '.c-lbl').textContent = Math.round(300 * t) + ' מ״ל';
+    },
+    reset(w) { this.busy = false; this.set(w, 0); const s = $(w, '.stream'); s.setAttribute('height', 0); s.setAttribute('x', 217); say(w, 'בבקבוק הרחב יש <b>' + L('300') + ' מ״ל</b> מיץ.'); },
+    pour(w) {
+      if (this.busy) return; this.busy = true; const s = $(w, '.stream');
+      tween(1800, t => { this.set(w, t); s.setAttribute('height', t < .97 ? 208 - 40 - 143 * t : 0); },
+        () => say(w, `בכוס הצרה יש <b>${L('300')} מ״ל</b>. המיץ נראה <b>גבוה יותר</b>, אבל הכמות <b>אותה כמות</b>! השתנתה רק <b>הצורה</b>.`));
+    },
+  };
+
+  // ---------- calibration
+  W.calib = {
+    init(w) { this.reset(w); },
+    // bottle profile: width at height h (0..200)
+    bw: h => h <= 100 ? 110 : h <= 160 ? 110 - (h - 100) * (70 / 60) : 40,
+    bottleH(ml) { let A = 0, h = 0; const target = ml * 171; while (A < target && h < 200) { A += this.bw(h) * .5; h += .5; } return h; },
+    draw(w, ml) {
+      const jar = $(w, '.jar'), bot = $(w, '.bottle'); jar.innerHTML = ''; bot.innerHTML = '';
+      const jh = ml * 1.9;
+      el('rect', { x: 40, y: 250 - jh, width: 90, height: jh, class: 'water-fill' }, jar);
+      el('path', { d: 'M40 40 L40 250 L130 250 L130 40', class: 'glass-line' }, jar);
+      const cx = 235, prof = [];
+      for (let h = 0; h <= 200; h += 2) prof.push([h, this.bw(h)]);
+      const bh = this.bottleH(ml), fill = prof.filter(p => p[0] <= bh).concat([[bh, this.bw(bh)]]);
+      if (ml > 0) el('polygon', { points: fill.map(p => `${cx + p[1] / 2},${250 - p[0]}`).concat(fill.slice().reverse().map(p => `${cx - p[1] / 2},${250 - p[0]}`)).join(' '), class: 'water-fill' }, bot);
+      el('path', { d: 'M' + prof.map(p => `${cx + p[1] / 2} ${250 - p[0]}`).join(' L') + ' L' + prof.slice().reverse().map(p => `${cx - p[1] / 2} ${250 - p[0]}`).join(' L') + ' Z', class: 'glass-line', fill: 'none' }, bot);
+      for (let m = 20; m <= this.marks; m += 20) {
+        const y1 = 250 - m * 1.9; el('line', { x1: 40, x2: 75, y1, y2: y1, class: 'mark' }, jar);
+        const t1 = el('text', { x: 138, y: y1 + 5, class: 'mark-t n' }, jar); t1.textContent = m;
+        const h2 = this.bottleH(m), y2 = 250 - h2, half = this.bw(h2) / 2;
+        el('line', { x1: cx + half, x2: cx + half - 30, y1: y2, y2, class: 'mark' }, bot);
+        const t2 = el('text', { x: cx + half + 6, y: y2 + 5, class: 'mark-t n' }, bot); t2.textContent = m;
+      }
+    },
+    reset(w) { this.ml = 0; this.marks = 0; this.busy = false; this.draw(w, 0); say(w, 'לחצי כדי להוסיף 20 מ״ל לכל כלי ולסמן קו.'); },
+    add(w) {
+      if (this.busy || this.ml >= 100) return; this.busy = true; const from = this.ml;
+      tween(800, t => this.draw(w, from + 20 * t), () => {
+        this.ml = from + 20; this.marks = this.ml; this.draw(w, this.ml); this.busy = false;
+        say(w, this.ml < 100 ? `מים: <b>${L(this.ml)} מ״ל</b>. סימנו קו וכתבנו "${L(this.ml)}".`
+          : `<b>סיימנו!</b> בצנצנת הישרה הקווים <b>במרחקים שווים</b>. בבקבוק הלא ישר הם <b>לא שווים</b> - למעלה, איפה שהבקבוק צר, הם רחוקים יותר. לכן חייבים למזוג ולסמן כל פעם מחדש!`);
+      });
+    },
+  };
+
+  // ---------- paper in cup
+  W.paper = {
+    init(w) { this.reset(w); },
+    reset(w) { this.busy = false; $(w, '.cup').setAttribute('transform', ''); const r = $(w, '.cup-water'); r.setAttribute('height', 0); r.setAttribute('y', 110); say(w, 'בתחתית הכוס יש נייר <b>יבש</b>. הופכים את הכוס ומכניסים אותה ישר למטה.'); },
+    dip(w) {
+      if (this.busy) return; this.busy = true; const cup = $(w, '.cup'), r = $(w, '.cup-water');
+      tween(1600, t => { cup.setAttribute('transform', `translate(0 ${90 * t})`); const h = Math.max(0, 14 * (t - .25) / .75); r.setAttribute('height', h); r.setAttribute('y', 110 - h); },
+        () => say(w, '<b>הנייר נשאר יבש!</b> בתוך הכוס היה <b>אוויר</b>. האוויר <b>תופס מקום</b> ולא נתן למים להיכנס עד הנייר.'));
+    },
+  };
+
+  // ---------- balloon in bottle
+  W.balloon = {
+    init(w) { this.reset(w); },
+    set(w, rx, ry, cy) { const b = $(w, '.bln'); b.setAttribute('rx', rx); b.setAttribute('ry', ry); b.setAttribute('cy', cy); },
+    reset(w) { this.busy = false; this.set(w, 14, 20, 70); $(w, '.hole').setAttribute('r', 0); $(w, '.air').style.opacity = 1; say(w, 'הבלון בתוך הבקבוק, ופי הבלון מתוח על פי הבקבוק.'); },
+    blow(w) {
+      if (this.busy) return; this.busy = true;
+      tween(1300, t => { const k = Math.sin(t * Math.PI * 3) * (1 - t) * 2; this.set(w, 14 + 8 * t + k, 20 + 10 * t + k, 70 + 6 * t); },
+        () => { this.busy = false; say(w, 'הבלון <b>כמעט לא התנפח!</b> הבקבוק "הריק" מלא <b>אוויר</b>, והאוויר <b>תופס מקום</b>.'); });
+    },
+    hole(w) {
+      if (this.busy) return; this.busy = true; $(w, '.hole').setAttribute('r', 5);
+      tween(1600, t => { this.set(w, 14 + 58 * t, 20 + 72 * t, 70 + 80 * t); $(w, '.air').style.opacity = 1 - t; },
+        () => { this.busy = false; say(w, 'עם חור - האוויר <b>יוצא</b> מהבקבוק, ועכשיו יש לבלון <b>מקום</b> לגדול!'); });
+    },
+  };
+
+  // ---------- measuring tools
+  const TOOLS = [
+    '<b>משורה</b> - הכלי העיקרי למדידת נפח של <b>נוזלים</b>. צרה וגבוהה, ולכן <b>מדויקת</b>. משמשת גם למדידת נפח של אבן.',
+    '<b>כוס כימית</b> - מודדת נוזלים <b>בערך</b>. היא רחבה, ולכן <b>פחות מדויקת</b> ממשורה.',
+    '<b>בקבוק קוני</b> - צר למעלה ורחב למטה. נוח לערבב בו בלי שיישפך. המדידה בו <b>לא מדויקת</b>.',
+    '<b>פיפטה</b> - מעבירה ומודדת כמויות <b>קטנות מאוד</b>, אפילו טיפות.',
+    '<b>מזרק</b> - מודד כמות <b>קטנה ומדויקת</b>, כמו תרופה. מודד גם נפח של <b>אוויר</b>.',
+  ];
+  W.tools = {
+    init(w) { $$(w, '.tool').forEach(g => { const f = () => { this.stop = true; this.pick(w, +g.dataset.i); };
+      g.addEventListener('click', f); g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); f(); } }); }); },
+    pick(w, i) { $$(w, '.tool').forEach(g => g.classList.toggle('on', +g.dataset.i === i)); say(w, TOOLS[i]); },
+    async tour(w) { this.stop = false; for (let i = 0; i < 5 && !this.stop; i++) { this.pick(w, i); await wait(2600); } },
+    auto(w) { this.tour(w); },
+  };
+
+  // ---------- wiring
+  $$(document, '.widget').forEach(w => {
+    const k = w.dataset.w, o = W[k]; if (!o) return;
+    o.init && o.init(w);
+    $$(w, '[data-act]').forEach(b => b.addEventListener('click', () => o[b.dataset.act] && o[b.dataset.act](w)));
+  });
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in'); io.unobserve(e.target);
+    const o = W[e.target.dataset.w]; if (o && o.auto) setTimeout(() => o.auto(e.target), 250);
+  }), { threshold: .25 });
+  $$(document, '.reveal').forEach(e => io.observe(e));
+
+  // ---------- topic nav highlight
+  const links = $$(document, '.nav a');
+  const sio = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle('cur', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-40% 0px -55% 0px' });
+  $$(document, 'section.part').forEach(s => sio.observe(s));
+})();
+</script>
+</body></html>
