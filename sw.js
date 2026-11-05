@@ -1,6 +1,6 @@
 // Offline support: the notebook keeps working with no internet.
 // The page itself is fetched fresh when online (so updates arrive), and served from cache when offline.
-const CACHE = 'ofri-v2';
+const CACHE = 'ofri-v3';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './favicon.png'];
 
 self.addEventListener('install', e => {
